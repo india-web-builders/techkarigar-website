@@ -1,0 +1,148 @@
+.glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, #1a2ffb, #7437ff, #8832f7, #c1ff00);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 300% 300%;
+    animation: gradient-shift 10s ease infinite;
+}
+
+/* Fix for Chrome/Safari: Apply gradient to split characters */
+.text-gradient .char {
+    background: linear-gradient(135deg, #1a2ffb, #7437ff, #8832f7, #c1ff00);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 300% 300%;
+    animation: gradient-shift 10s ease infinite;
+}
+
+@keyframes gradient-shift {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    25% {
+        background-position: 50% 100%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    75% {
+        background-position: 50% 0%;
+    }
+}
+
+body {
+    background: linear-gradient(135deg, #ffffff 0%, #f0f1fa 50%, #e4e6ef 100%);
+    background-attachment: fixed;
+    color: #000000;
+    cursor: none;
+    /* Hide default cursor */
+}
+
+
+/* Bright glow effects */
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Custom Cursor */
+.cursor-dot,
+.cursor-outline {
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-out;
+    z-index: 9999;
+}
+
+.cursor-dot {
+    width: 10px;
+    height: 10px;
+    background: linear-gradient(135deg, #1a2ffb, #7437ff);
+    box-shadow: 0 0 30px rgba(26, 47, 251, 0.8);
+}
+
+.cursor-outline {
+    width: 45px;
+    height: 45px;
+    border: 3px solid rgba(26, 47, 251, 0.6);
+    transition: all 0.15s ease-out;
+}
+
+/* Grid Pattern */
+.grid-pattern {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 0);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(ellipse at center, black, transparent 80%);
+}
+
+/* Reveal Animation */
+.reveal-text {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+/* Character Hover Zoom */
+.char-hover {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+        color 0.3s ease;
+    cursor: default;
+}
+
+.char-hover:hover {
+    transform: scale(1.4) translateY(-5px);
+    color: #c084fc;
+    text-shadow: 0 0 20px rgba(192, 132, 252, 0.5);
+}
+
+/* Warp Effect Container */
+.warp-container {
+    position: relative;
+    will-change: transform;
+}
+
+/* Cinematic Pause States */
+.pause-marker {
+    position: absolute;
+    right: 2rem;
+    width: 4px;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, #a855f7, transparent);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.pause-marker.active {
+    opacity: 1;
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 30px rgba(168, 85, 247, 0.8);
+    }
+}
