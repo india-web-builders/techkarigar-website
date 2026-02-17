@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Techkarigar | The Technical Artisans for High-Growth Brands</title>
+    <meta name="title" content="Techkarigar | The Technical Artisans for High-Growth Brands">
+    <meta name="description"
+        content="Techkarigar builds astoundingly beautiful Web, Mobile, and AI solutions for high-intent niches. From AI automation for law firms to high-conversion landing pages for contractors.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://techkarigar.com/">
+    <meta property="og:title" content="Techkarigar | The Technical Artisans for High-Growth Brands">
+    <meta property="og:description"
+        content="Bespoke digital artistry for the modern web. We build lead machines and AI workflows that scale your business.">
+    <meta property="og:image" content="https://techkarigar.com/assets/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://techkarigar.com/">
+    <meta property="twitter:title" content="Techkarigar | The Technical Artisans for High-Growth Brands">
+    <meta property="twitter:description"
+        content="Bespoke digital artistry for the modern web. We build lead machines and AI workflows that scale your business.">
+    <meta property="twitter:image" content="https://techkarigar.com/assets/og-image.jpg">
+
+    <!-- Fancy Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Space+Grotesk:wght@300..700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Space Grotesk', 'sans-serif'],
+                        display: ['Playfair Display', 'serif'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f1fa',
+                            100: '#e4e6ef',
+                            200: '#c1ff00',
+                            300: '#07f78c',
+                            400: '#1a2ffb',
+                            500: '#7437ff',
+                            600: '#8832f7',
+                            700: '#0016ec',
+                            800: '#ff4c41',
+                            900: '#000000',
+                            white: '#ffffff',
+                            light: '#f0f1fa',
+                        }
+                    },
+                    animation: {
+                        'gradient': 'gradient 8s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        gradient: {
+                            '0%, 100%': { 'background-size': '200% 200%', 'background-position': 'left center' },
+                            '50%': { 'background-size': '200% 200%', 'background-position': 'right center' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Styles -->
+    <style type="text/css">
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #1a2ffb, #7437ff, #8832f7, #c1ff00);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 300% 300%;
+            animation: gradient-shift 10s ease infinite;
+        }
+
+        /* Fix for Chrome/Safari: Apply gradient to split characters */
+        .text-gradient .char {
+            background: linear-gradient(135deg, #1a2ffb, #7437ff, #8832f7, #c1ff00);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 300% 300%;
+            animation: gradient-shift 10s ease infinite;
+        }
+
+        @keyframes gradient-shift {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            25% {
+                background-position: 50% 100%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            75% {
+                background-position: 50% 0%;
+            }
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f1fa 50%, #e4e6ef 100%);
+            background-attachment: fixed;
+            color: #000000;
+            cursor: none;
+            /* Hide default cursor */
+        }
+
+
+        /* Bright glow effects */
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Custom Cursor */
+        .cursor-dot,
+        .cursor-outline {
+            pointer-events: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-out;
+            z-index: 9999;
+        }
+
+        .cursor-dot {
+            width: 10px;
+            height: 10px;
+            background: linear-gradient(135deg, #1a2ffb, #7437ff);
+            box-shadow: 0 0 30px rgba(26, 47, 251, 0.8);
+        }
+
+        .cursor-outline {
+            width: 45px;
+            height: 45px;
+            border: 3px solid rgba(26, 47, 251, 0.6);
+            transition: all 0.15s ease-out;
+        }
+
+        /* Grid Pattern */
+        .grid-pattern {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 0);
+            background-size: 40px 40px;
+            mask-image: radial-gradient(ellipse at center, black, transparent 80%);
+        }
+
+        /* Reveal Animation */
+        .reveal-text {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        /* Character Hover Zoom */
+        .char-hover {
+            display: inline-block;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                color 0.3s ease;
+            cursor: default;
+        }
+
+        .char-hover:hover {
+            transform: scale(1.4) translateY(-5px);
+            color: #c084fc;
+            text-shadow: 0 0 20px rgba(192, 132, 252, 0.5);
+        }
+
+        /* Warp Effect Container */
+        .warp-container {
+            position: relative;
+            will-change: transform;
+        }
+
+        /* Cinematic Pause States */
+        .pause-marker {
+            position: absolute;
+            right: 2rem;
+            width: 4px;
+            height: 60px;
+            background: linear-gradient(to bottom, transparent, #a855f7, transparent);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .pause-marker.active {
+            opacity: 1;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 0 30px rgba(168, 85, 247, 0.8);
+            }
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased text-gray-800 selection:bg-brand-500/30 selection:text-brand-400">
+
+    <!-- Content will be injected here -->
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Neuron Network Canvas Background -->
+
+
+    <div id="app" class="relative overflow-hidden" style="z-index: 1;">
+        <!-- Background Orbs -->
+        <div class="fixed inset-0 grid-pattern pointer-events-none opacity-50"></div>
+        <div
+            class="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] bg-brand-500/10 rounded-full blur-[120px] pointer-events-none animate-pulse">
+        </div>
+        <div
+            class="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-brand-600/10 rounded-full blur-[120px] pointer-events-none">
+        </div>
+
+        <!-- Header -->
+        <header class="fixed top-0 w-full z-50 py-6 px-10 transition-all duration-300" id="navbar">
+            <nav class="max-w-7xl mx-auto flex items-center justify-between">
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div
+                        class="w-10 h-10 glass rounded-xl flex items-center justify-center group-hover:bg-brand-500/20 transition-all duration-300">
+                        <i data-lucide="wrench" class="w-5 h-5 text-brand-400"></i>
+                    </div>
+                    <span class="font-display text-2xl font-bold tracking-tight text-gray-900 italic">Tech<span
+                            class="text-brand-400">karigar</span></span>
+                </a>
+
+                <div class="hidden md:flex items-center space-x-10">
+                    <a href="#services"
+                        class="text-sm font-medium text-gray-700 hover:text-brand-400 transition-colors">Services</a>
+                    <a href="#work"
+                        class="text-sm font-medium text-gray-700 hover:text-brand-400 transition-colors">Work</a>
+                    <a href="#about"
+                        class="text-sm font-medium text-gray-700 hover:text-brand-400 transition-colors">About</a>
+                    <a href="mailto:hello@techkarigar.com"
+                        class="px-5 py-2.5 glass rounded-full text-sm font-semibold hover:border-brand-500/50 hover:bg-brand-500/5 transition-all duration-300">Start
+                        a Project</a>
+                </div>
+
+                <button class="md:hidden w-10 h-10 glass rounded-lg flex items-center justify-center">
+                    <i data-lucide="menu" class="w-5 h-5"></i>
+                </button>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center justify-center px-10 pt-32 pb-20 relative overflow-hidden">
+            <!-- Neuron Network Canvas Background -->
+            <canvas id="neuron-canvas"
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;"></canvas>
+
+            <div class="max-w-6xl mx-auto text-center relative z-10">
+                <div
+                    class="hero-badge inline-flex items-center space-x-2 glass px-6 py-3 rounded-full mb-8 opacity-0 scale-90">
+                    <div class="w-2 h-2 bg-brand-300 rounded-full animate-pulse"></div>
+                    <span class="text-sm font-medium text-gray-700">Available for Select Projects</span>
+                </div>
+                <h1 class="hero-title font-display text-6xl md:text-8xl lg:text-9xl font-bold mb-8 leading-none">
+                    <span class="text-gray-900 italic">Crafting</span><br>
+                    <span class="text-gradient">Digital</span>
+                    <span class="text-gray-900 italic">Masterpieces</span>
+                </h1>
+                <p
+                    class="hero-desc text-gray-700 text-xl md:text-2xl max-w-3xl mx-auto mb-12 leading-relaxed font-light opacity-0 translate-y-10">
+                    We build <span class="font-semibold text-brand-400">ridiculously imaginative</span> web experiences,
+                    AI automation systems, and conversion-optimized platforms for ambitious brands.
+                </p>
+                <div
+                    class="hero-btns flex flex-col sm:flex-row items-center justify-center gap-6 opacity-0 translate-y-10">
+                    <a href="#work"
+                        class="group px-8 py-4 bg-gradient-to-r from-brand-400 to-brand-500 text-white rounded-full font-semibold hover:shadow-2xl hover:shadow-brand-400/50 transition-all duration-300 hover:scale-105">
+                        <span class="flex items-center space-x-2">
+                            <span>View Our Work</span>
+                            <i data-lucide="arrow-right"
+                                class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                        </span>
+                    </a>
+                    <a href="#services"
+                        class="px-8 py-4 glass rounded-full font-semibold text-gray-900 hover:border-brand-400 hover:bg-brand-400/10 transition-all duration-300">Explore
+                        Services</a>
+                </div>
+                <div class="hero-visual mt-20 relative">
+                    <div
+                        class="w-full h-64 glass rounded-3xl flex items-center justify-center relative overflow-hidden">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-brand-400/20 via-brand-500/10 to-brand-600/20">
+                        </div>
+                        <div class="relative z-10 text-center">
+                            <i data-lucide="sparkles" class="w-20 h-20 text-brand-400 mx-auto mb-4"></i>
+                            <p class="text-gray-700 font-medium">Award-Winning Design Standards</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-32 px-10 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-24">
+                    <h2 class="font-display text-5xl md:text-7xl font-bold mb-6 text-gray-900 italic tracking-tight">
+                        Specialized <span class="text-brand-400">Niches</span>
+                    </h2>
+                    <p class="text-gray-700 max-w-2xl mx-auto text-lg font-light leading-relaxed">
+                        We don't do "everything." We focus on high-barrier, technical problems that deliver massive ROI
+                        for our clients.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Niche #1: AI for Professionals -->
+                    <div
+                        class="service-card opacity-0 translate-y-12 group p-8 glass rounded-[40px] hover:bg-white/[0.05] transition-all duration-500 border-white/5 relative overflow-hidden">
+                        <div
+                            class="absolute top-0 right-0 w-32 h-32 bg-brand-500/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-brand-500/10 transition-all duration-500">
+                        </div>
+
+                        <div
+                            class="w-14 h-14 glass rounded-2xl flex items-center justify-center mb-8 group-hover:bg-brand-500/20 transition-all duration-300">
+                            <i data-lucide="brain-circuit" class="w-7 h-7 text-brand-400"></i>
+                        </div>
+
+                        <h3
+                            class="font-display text-3xl font-bold text-gray-900 mb-4 group-hover:text-brand-400 transition-colors italic">
+                            AI for Professionals</h3>
+                        <p class="text-gray-700 leading-relaxed mb-8 font-light italic">
+                            custom AI apps for Law Firms, Medical Practices, and Consultants. We turn your data into
+                            automated growth.
+                        </p>
+
+                        <ul class="space-y-3 mb-10">
+                            <li class="flex items-center space-x-3 text-sm text-gray-700">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500"></i>
+                                <span>Automated Case Summaries</span>
+                            </li>
+                            <li class="flex items-center space-x-3 text-sm text-gray-700">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500"></i>
+                                <span>Patient Onboarding AI</span>
+                            </li>
+                            <li class="flex items-center space-x-3 text-sm text-gray-700">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500"></i>
+                                <span>24/7 Intelligent Triage</span>
+                            </li>
+                        </ul>
+
+                        <a href="#" class="inline-flex items-center space-x-2 text-brand-400 font-bold group/link">
+                            <span>Explore AI Forge</span>
+                            <i data-lucide="arrow-right"
+                                class="w-4 h-4 group-hover/link:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+
+                    <!-- Niche #2: Home Services Growth -->
+                    <div
+                        class="service-card opacity-0 translate-y-12 group p-8 glass rounded-[40px] hover:bg-white/[0.05] transition-all duration-500 border-white/5 border-t-brand-500/20 relative overflow-hidden">
+                        <div
+                            class="w-14 h-14 glass rounded-2xl flex items-center justify-center mb-8 group-hover:bg-brand-500/20 transition-all duration-300">
+                            <i data-lucide="home" class="w-7 h-7 text-brand-400"></i>
+                        </div>
+
+                        <h3
+                            class="font-display text-3xl font-bold text-gray-900 mb-4 group-hover:text-brand-400 transition-colors italic">
+                            Lead Machines</h3>
+                        <p class="text-gray-700 leading-relaxed mb-8 font-light italic">
+                            High-conversion Landing Pages and Local SEO for Solar, Roofing, and HVAC contractors.
+                        </p>
+
+                        <ul class="space-y-3 mb-10">
+                            <li class="flex items-center space-x-3 text-sm text-gray-700">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500"></i>
+                                <span>1s Page Load Speeds</span>
+                            </li>
+                            <li class="flex items-center space-x-3 text-sm text-gray-700">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500"></i>
+                                <span>Hyper-Local SEO Strategy</span>
+                            </li>
+                            <li class="flex items-center space-x-3 text-sm text-gray-700">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500"></i>
+                                <span>Direct CRM Integration</span>
+                            </li>
+                        </ul>
+
+                        <a href="#" class="inline-flex items-center space-x-2 text-brand-400 font-bold group/link">
+                            <span>Get More Leads</span>
+                            <i data-lucide="arrow-right"
+                                class="w-4 h-4 group-hover/link:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+
+                    <!-- Niche #3: Boutique eCommerce -->
+                    <div
+                        class="service-card opacity-0 translate-y-12 group p-8 glass rounded-[40px] hover:bg-white/[0.05] transition-all duration-500 border-white/5 relative overflow-hidden">
+                        <div
+                            class="w-14 h-14 glass rounded-2xl flex items-center justify-center mb-8 group-hover:bg-brand-500/20 transition-all duration-300">
+                            <i data-lucide="shopping-bag" class="w-7 h-7 text-brand-400"></i>
+                        </div>
+
+                        <h3
+                            class="font-display text-3xl font-bold text-gray-900 mb-4 group-hover:text-brand-400 transition-colors italic">
+                            Boutique eCommerce</h3>
+                        <p class="text-gray-700 leading-relaxed mb-8 font-light italic">
+                            Bespoke Shopify storefronts and API inventory sync for Creator-led and Artisanal brands.
+                        </p>
+
+                        <ul class="space-y-3 mb-10">
+                            <li class="flex items-center space-x-3 text-sm text-gray-700">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500"></i>
+                                <span>Custom Interactive UI</span>
+                            </li>
+                            <li class="flex items-center space-x-3 text-sm text-gray-700">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500"></i>
+                                <span>TikTok Shop Inventory Sync</span>
+                            </li>
+                            <li class="flex items-center space-x-3 text-sm text-gray-700">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-500"></i>
+                                <span>Artisanal Web Performance</span>
+                            </li>
+                        </ul>
+
+                        <a href="#" class="inline-flex items-center space-x-2 text-brand-400 font-bold group/link">
+                            <span>Forge Your Store</span>
+                            <i data-lucide="arrow-right"
+                                class="w-4 h-4 group-hover/link:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Showcase Section -->
+        <section id="work" class="py-32 px-10 relative bg-brand-navy/50">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col md:flex-row items-end justify-between mb-24 gap-8">
+                    <div class="max-w-2xl">
+                        <h2
+                            class="font-outfit text-4xl md:text-5xl font-bold mb-6 text-gray-900 uppercase italic tracking-tight">
+                            Karigar <span class="text-brand-400">Proof</span>
+                        </h2>
+                        <p class="text-gray-700 text-lg font-light leading-relaxed">
+                            Our projects aren't just built; they are forged. Every line of code and every pixel is an
+                            intentional step towards your growth.
+                        </p>
+                    </div>
+                    <a href="#"
+                        class="group flex items-center space-x-4 glass px-8 py-4 rounded-2xl hover:bg-white/5 transition-all">
+                        <span class="font-bold text-gray-900">Full Portfolio</span>
+                        <i data-lucide="external-link"
+                            class="w-5 h-5 text-brand-400 group-hover:rotate-12 transition-transform"></i>
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <!-- Project 1 -->
+                    <div
+                        class="project-card opacity-0 group relative rounded-[48px] overflow-hidden glass border-white/5 aspect-[4/3] md:aspect-video flex items-center justify-center">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80 z-10">
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&q=80&w=1200"
+                            alt="Legal AI App"
+                            class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-110">
+
+                        <div class="absolute bottom-10 left-10 z-20">
+                            <div
+                                class="px-3 py-1 glass rounded-full text-[10px] font-bold text-brand-400 mb-4 uppercase tracking-widest inline-block">
+                                AI Workflow</div>
+                            <h3 class="text-3xl font-bold text-gray-900 mb-2">LexiScale AI</h3>
+                            <p class="text-gray-700 font-light italic">Automated case intake system for high-volume law
+                                firms.</p>
+                        </div>
+
+                        <div
+                            class="absolute top-10 right-10 z-20 opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0 transition-all duration-500">
+                            <div
+                                class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-brand-navy shadow-2xl">
+                                <i data-lucide="arrow-up-right" class="w-6 h-6"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div
+                        class="project-card opacity-0 group relative rounded-[48px] overflow-hidden glass border-white/5 aspect-[4/3] md:aspect-video flex items-center justify-center">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80 z-10">
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1513584684374-8bdb74838a0f?auto=format&fit=crop&q=80&w=1200"
+                            alt="Solar Landing Page"
+                            class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-110">
+
+                        <div class="absolute bottom-10 left-10 z-20">
+                            <div
+                                class="px-3 py-1 glass rounded-full text-[10px] font-bold text-brand-400 mb-4 uppercase tracking-widest inline-block">
+                                Home Services</div>
+                            <h3 class="text-3xl font-bold text-gray-900 mb-2">SolarFlow Pro</h3>
+                            <p class="text-gray-700 font-light italic">Conversion-optimized lead gen system for solar
+                                installers.</p>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div
+                        class="project-card opacity-0 group relative rounded-[48px] overflow-hidden glass border-white/5 aspect-[4/3] md:aspect-video flex items-center justify-center">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80 z-10">
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200"
+                            alt="E-commerce Platform"
+                            class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-110">
+                        <div class="absolute bottom-10 left-10 z-20">
+                            <div
+                                class="px-3 py-1 glass rounded-full text-[10px] font-bold text-brand-400 mb-4 uppercase tracking-widest inline-block">
+                                E-Commerce</div>
+                            <h3 class="text-3xl font-bold text-gray-900 mb-2">Artisan Market</h3>
+                            <p class="text-gray-700 font-light italic">Custom Shopify store with 3D product
+                                visualization.</p>
+                        </div>
+                        <div
+                            class="absolute top-10 right-10 z-20 opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0 transition-all duration-500">
+                            <div
+                                class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-brand-navy shadow-2xl">
+                                <i data-lucide="arrow-up-right" class="w-6 h-6"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 4 -->
+                    <div
+                        class="project-card opacity-0 group relative rounded-[48px] overflow-hidden glass border-white/5 aspect-[4/3] md:aspect-video flex items-center justify-center">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80 z-10">
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=1200"
+                            alt="SaaS Dashboard"
+                            class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-110">
+                        <div class="absolute bottom-10 left-10 z-20">
+                            <div
+                                class="px-3 py-1 glass rounded-full text-[10px] font-bold text-brand-400 mb-4 uppercase tracking-widest inline-block">
+                                SaaS Platform</div>
+                            <h3 class="text-3xl font-bold text-gray-900 mb-2">ContractorHub</h3>
+                            <p class="text-gray-700 font-light italic">All-in-one CRM for home service businesses.</p>
+                        </div>
+                        <div
+                            class="absolute top-10 right-10 z-20 opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0 transition-all duration-500">
+                            <div
+                                class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-brand-navy shadow-2xl">
+                                <i data-lucide="arrow-up-right" class="w-6 h-6"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonials -->
+                <div class="mt-32 grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="testimonial opacity-0 p-8 glass rounded-[32px] border-l-brand-400 border-l-4">
+                        <div class="flex space-x-1 mb-6">
+                            <i data-lucide="star" class="w-4 h-4 text-brand-400 fill-brand-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-brand-400 fill-brand-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-brand-400 fill-brand-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-brand-400 fill-brand-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-brand-400 fill-brand-400"></i>
+                        </div>
+                        <p class="text-gray-900 italic font-light mb-8 leading-relaxed">
+                            "Techkarigar turned our chaotic client intake into a seamless AI workflow. We've reclaimed
+                            15 hours of partner time weekly. Absolute artisans."
+                        </p>
+                        <div class="flex items-center space-x-4">
+                            <div
+                                class="w-10 h-10 rounded-full bg-brand-500/20 flex items-center justify-center font-bold text-brand-400 text-xs uppercase">
+                                JS</div>
+                            <div>
+                                <div class="text-sm font-bold text-gray-900 leading-none mb-1">James Sterling</div>
+                                <div class="text-xs text-gray-600 uppercase tracking-tighter">Managing Partner, Sterling
+                                    Law</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial opacity-0 p-8 glass rounded-[32px] border-l-brand-400 border-l-4">
+                        <div class="flex space-x-1 mb-6">
+                            <i data-lucide="star" class="w-4 h-4 text-brand-400 fill-brand-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-brand-400 fill-brand-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-brand-400 fill-brand-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-brand-400 fill-brand-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-brand-400 fill-brand-400"></i>
+                        </div>
+                        <p class="text-gray-900 italic font-light mb-8 leading-relaxed">
+                            "Our cost per lead dropped by 45% after Techkarigar rebuilt our roofing landing pages. They
+                            understand conversion better than any 'big' agency."
+                        </p>
+                        <div class="flex items-center space-x-4">
+                            <div
+                                class="w-10 h-10 rounded-full bg-brand-500/20 flex items-center justify-center font-bold text-brand-400 text-xs uppercase">
+                                MK</div>
+                            <div>
+                                <div class="text-sm font-bold text-gray-900 leading-none mb-1">Marcus Kane</div>
+                                <div class="text-xs text-gray-600 uppercase tracking-tighter">Founder, Kane Solar
+                                    Solutions</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial opacity-0 p-8 glass rounded-[32px] border-l-brand-400 border-l-4">
+                        <div class="flex space-x-1 mb-6">
+                            <i data-lucide="star" class="w-4 h-4 text-brand-400 fill-brand-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-brand-400 fill-brand-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-brand-400 fill-brand-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-brand-400 fill-brand-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-brand-400 fill-brand-400"></i>
+                        </div>
+                        <p class="text-gray-900 italic font-light mb-8 leading-relaxed">
+                            "The Shopify custom sync they built for our artisan ceramics brand works flawlessly. It's
+                            rare to find such technical depth with high-end design."
+                        </p>
+                        <div class="flex items-center space-x-4">
+                            <div
+                                class="w-10 h-10 rounded-full bg-brand-500/20 flex items-center justify-center font-bold text-brand-400 text-xs uppercase">
+                                EL</div>
+                            <div>
+                                <div class="text-sm font-bold text-gray-900 leading-none mb-1">Elena Lopez</div>
+                                <div class="text-xs text-gray-600 uppercase tracking-tighter">Creative Director, Clay &
+                                    Co.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer Section -->
+        <footer class="py-20 px-10 glass border-t border-white/5 relative z-10">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
+                    <div class="col-span-2">
+                        <a href="#" class="flex items-center space-x-3 mb-8 group">
+                            <div
+                                class="w-10 h-10 glass rounded-xl flex items-center justify-center group-hover:bg-brand-500/20 transition-all duration-300">
+                                <i data-lucide="wrench" class="w-5 h-5 text-brand-400"></i>
+                            </div>
+                            <span
+                                class="font-outfit text-2xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">Techkarigar</span>
+                        </a>
+                        <p class="text-gray-700 max-w-sm mb-10 font-light leading-relaxed">
+                            Bespoke digital artistry for high-intent niches. We build the lead machines and AI workflows
+                            that scale modern businesses.
+                        </p>
+                        <div class="flex space-x-4">
+                            <a href="#"
+                                class="w-10 h-10 glass rounded-full flex items-center justify-center text-gray-700 hover:text-brand-400 hover:border-brand-500/50 transition-all">
+                                <i data-lucide="twitter" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#"
+                                class="w-10 h-10 glass rounded-full flex items-center justify-center text-gray-700 hover:text-brand-400 hover:border-brand-500/50 transition-all">
+                                <i data-lucide="linkedin" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#"
+                                class="w-10 h-10 glass rounded-full flex items-center justify-center text-gray-700 hover:text-brand-400 hover:border-brand-500/50 transition-all">
+                                <i data-lucide="github" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="font-outfit font-bold text-gray-900 uppercase tracking-widest text-xs mb-8">Niches
+                        </h4>
+                        <ul class="space-y-4 text-sm text-gray-600">
+                            <li><a href="#" class="hover:text-brand-400 transition-colors">AI for Professionals</a></li>
+                            <li><a href="#" class="hover:text-brand-400 transition-colors">Home Service SEO</a></li>
+                            <li><a href="#" class="hover:text-brand-400 transition-colors">Boutique Shopify</a></li>
+                            <li><a href="#" class="hover:text-brand-400 transition-colors">API Integrations</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="font-outfit font-bold text-gray-900 uppercase tracking-widest text-xs mb-8">Contacts
+                        </h4>
+                        <ul class="space-y-4 text-sm text-gray-600">
+                            <li class="flex items-center space-x-3">
+                                <i data-lucide="mail" class="w-4 h-4 text-brand-400"></i>
+                                <a href="mailto:hello@techkarigar.com"
+                                    class="hover:text-brand-400 transition-colors">hello@techkarigar.com</a>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i data-lucide="map-pin" class="w-4 h-4 text-brand-400"></i>
+                                <span>San Francisco & Remote</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div class="text-xs text-gray-600">
+                        &copy; 2026 Techkarigar. All rights reserved. Artisan Codebase.
+                    </div>
+                    <div class="flex space-x-8 text-xs text-gray-600">
+                        <a href="#" class="hover:text-gray-700 transition-colors">Privacy Policy</a>
+                        <a href="#" class="hover:text-gray-700 transition-colors">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        </main>
+    </div>
+
+    <!-- JSON-LD Structured Data for SEO (Service + FAQ) -->
+    <script type="application/ld+json">
+    [
+        {
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            "name": "Techkarigar",
+            "image": "https://techkarigar.com/assets/og-image.jpg",
+            "description": "Techkarigar builds astoundingly beautiful Web, Mobile, and AI solutions for high-intent niches.",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "San Francisco",
+                "addressRegion": "CA",
+                "addressCountry": "US"
+            },
+            "priceRange": "$$$",
+            "offers": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "AI Automation for Law Firms",
+                        "description": "Automated case intake and document drafting utilizing LLMs."
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Custom Shopify Development",
+                        "description": "Bespoke themes and API integrations for artisan brands."
+                    }
+                }
+            ]
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "How does AI automation help law firms?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Our LexiScale AI system automates client intake, case summarization, and document drafting, typically saving partners 15-20 hours per week."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Do you build custom Shopify themes?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes, we build bespoke Liquid themes with 3D product interactions and inventory sync for TikTok Shop and Instagram."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How do you improve Home Service SEO?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "We use a 'Cluster & Conquer' strategy with hyper-local landing pages for every city you serve to signal deep local authority."
+                    }
+                }
+            ]
+        }
+    ]
+    </script>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/split-type"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Locomotive Scroll v5 (built on Lenis) -->
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@5.0.0-beta.13/dist/locomotive-scroll.min.js"></script>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/locomotive-scroll@5.0.0-beta.13/dist/locomotive-scroll.min.css">
+
+    <script>
+        // Initialize Lucide
+        lucide.createIcons();
+
+        // GSAP ScrollTrigger Setup
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Locomotive Scroll v5 (buttery smooth scrolling)
+            let scroll;
+            try {
+                scroll = new LocomotiveScroll({
+                    lenisOptions: {
+                        duration: 1.2,
+                        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                        smoothWheel: true,
+                        smoothTouch: false,
+                    },
+                });
+
+                // Sync Locomotive Scroll with GSAP ScrollTrigger
+                scroll.on('scroll', ScrollTrigger.update);
+                ScrollTrigger.scrollerProxy(document.documentElement, {
+                    scrollTop(value) {
+                        return arguments.length ? scroll.scrollTo(value, { duration: 0, disableLerp: true }) : scroll.scroll;
+                    },
+                    getBoundingClientRect() {
+                        return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+                    }
+                });
+            } catch (e) {
+                console.log('Locomotive Scroll not available, using native scroll');
+            }
+
+            // Enhanced Custom Cursor with Velocity-Based Warp
+            const dot = document.querySelector(".cursor-dot");
+            const outline = document.querySelector(".cursor-outline");
+            let mouseX = 0, mouseY = 0;
+            let prevX = 0, prevY = 0;
+            let velocity = 0;
+
+            window.addEventListener("mousemove", (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+
+                // Calculate velocity for warp effect
+                const dx = mouseX - prevX;
+                const dy = mouseY - prevY;
+                velocity = Math.sqrt(dx * dx + dy * dy);
+
+                gsap.to(dot, { x: mouseX, y: mouseY, duration: 0.1, opacity: 1 });
+                gsap.to(outline, {
+                    x: mouseX,
+                    y: mouseY,
+                    duration: 0.3,
+                    opacity: 1,
+                    scale: 1 + (velocity * 0.01), // Scale based on speed
+                    rotation: velocity * 2 // Rotate based on speed
+                });
+
+                prevX = mouseX;
+                prevY = mouseY;
+            });
+
+            // Character Hover Zoom Effect - Split ALL headings
+            let heroTitle, allHeadings;
+            try {
+                heroTitle = new SplitType('.hero-title', { types: 'chars' });
+                allHeadings = new SplitType('h2, h3', { types: 'chars' });
+
+                // Add hover class to all characters
+                document.querySelectorAll('.char').forEach(char => {
+                    char.classList.add('char-hover');
+                });
+            } catch (e) {
+                console.log('SplitType not available');
+            }
+
+            // Cinematic Hero Sequence with 3D Transforms
+            const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
+
+            tl.to(".hero-badge", { opacity: 1, y: 0, scale: 1, duration: 1, delay: 0.3 });
+
+            if (heroTitle && heroTitle.chars) {
+                tl.fromTo(heroTitle.chars,
+                    {
+                        opacity: 0,
+                        y: 120,
+                        rotateX: -90,
+                        rotateY: 45,
+                        z: -200,
+                    },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        rotateX: 0,
+                        rotateY: 0,
+                        z: 0,
+                        stagger: {
+                            each: 0.03,
+                            from: "random"
+                        },
+                        duration: 1.8,
+                        ease: "expo.out"
+                    },
+                    "-=0.6"
+                );
+            }
+
+            tl.to(".hero-desc", { opacity: 1, y: 0, duration: 1.2 }, "-=1.2")
+                .to(".hero-btns", { opacity: 1, y: 0, duration: 1 }, "-=0.9")
+                .from(".hero-visual", {
+                    opacity: 0,
+                    scale: 0.7,
+                    rotate: -30,
+                    filter: "blur(20px)",
+                    duration: 2.5,
+                    ease: "expo.out"
+                }, "-=1.8");
+
+            // Magnetic Buttons with Minimal Movement (exclude footer and award block)
+            const allMagnetics = document.querySelectorAll('.glass, .group, a, button');
+            const footer = document.querySelector('footer');
+            const magnetics = Array.from(allMagnetics).filter(el => {
+                // Exclude if inside footer
+                if (footer && footer.contains(el)) return false;
+                // Exclude if element or parent contains "Award-Winning Design Standards"
+                if (el.textContent && el.textContent.includes('Award-Winning Design Standards')) return false;
+                if (el.closest && el.closest('[class*="glass"]') &&
+                    el.closest('[class*="glass"]').textContent.includes('Award-Winning Design Standards')) return false;
+                return true;
+            });
+
+            magnetics.forEach(el => {
+                el.addEventListener('mousemove', (e) => {
+                    const rect = el.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+
+                    gsap.to(el, {
+                        x: x * 0.08,
+                        y: y * 0.08,
+                        duration: 0.5,
+                        ease: "power2.out"
+                    });
+                    gsap.to(outline, {
+                        scale: 1.3,
+                        borderColor: '#a855f7',
+                        borderWidth: '3px',
+                        duration: 0.3
+                    });
+                });
+
+                el.addEventListener('mouseleave', () => {
+                    gsap.to(el, {
+                        x: 0,
+                        y: 0,
+                        duration: 0.6,
+                        ease: "power2.out"
+                    });
+                    gsap.to(outline, {
+                        scale: 1,
+                        borderColor: 'rgba(192, 132, 252, 0.4)',
+                        borderWidth: '2px',
+                        duration: 0.3
+                    });
+                });
+            });
+
+            // Cinematic Scroll Reveal with Stagger
+            gsap.utils.toArray('.service-card').forEach((card, i) => {
+                gsap.fromTo(card,
+                    {
+                        opacity: 0,
+                        y: 100,
+                        rotateX: -20,
+                        scale: 0.9
+                    },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        rotateX: 0,
+                        scale: 1,
+                        duration: 1.5,
+                        ease: "expo.out",
+                        scrollTrigger: {
+                            trigger: card,
+                            start: "top 80%",
+                            end: "top 20%",
+                            toggleActions: "play none none reverse"
+                        }
+                    }
+                );
+            });
+
+            // Project Cards with Parallax
+            gsap.utils.toArray('.project-card').forEach((card, i) => {
+                gsap.fromTo(card,
+                    {
+                        opacity: 0,
+                        y: 150,
+                        scale: 0.8,
+                        rotation: i % 2 === 0 ? -5 : 5
+                    },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        rotation: 0,
+                        duration: 1.8,
+                        ease: "expo.out",
+                        scrollTrigger: {
+                            trigger: card,
+                            start: "top 85%",
+                            toggleActions: "play none none reverse"
+                        }
+                    }
+                );
+            });
+
+            // Testimonials with Wave Effect
+            gsap.utils.toArray('.testimonial').forEach((item, i) => {
+                gsap.fromTo(item,
+                    {
+                        opacity: 0,
+                        x: i % 2 === 0 ? -100 : 100,
+                        rotateY: i % 2 === 0 ? -20 : 20
+                    },
+                    {
+                        opacity: 1,
+                        x: 0,
+                        rotateY: 0,
+                        duration: 1.5,
+                        ease: "expo.out",
+                        scrollTrigger: {
+                            trigger: item,
+                            start: "top 80%",
+                            toggleActions: "play none none reverse"
+                        }
+                    }
+                );
+            });
+
+            // FAQ Accordion Animation
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                    if (!isActive) item.classList.add('active');
+                });
+            });
+
+            // Cinematic Pause States at Scroll Percentages
+            const pauseMarkers = [25, 50, 75].map(percent => {
+                const marker = document.createElement('div');
+                marker.className = 'pause-marker';
+                marker.style.top = `${percent}vh`;
+                document.body.appendChild(marker);
+                return { element: marker, percent };
+            });
+
+            window.addEventListener('scroll', () => {
+                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+
+                // Activate pause markers
+                pauseMarkers.forEach(({ element, percent }) => {
+                    if (Math.abs(scrollPercent - percent) < 2) {
+                        element.classList.add('active');
+                    } else {
+                        element.classList.remove('active');
+                    }
+                });
+
+                // Navbar Evolution
+                const nav = document.getElementById('navbar');
+                if (window.scrollY > 50) {
+                    nav.classList.add('glass', 'py-4', 'border-b', 'border-white/5');
+                    nav.classList.remove('py-6');
+                } else {
+                    nav.classList.remove('glass', 'py-4', 'border-b', 'border-white/5');
+                    nav.classList.add('py-6');
+                }
+            });
+
+            // Parallax Background Movement
+            document.addEventListener("mousemove", (e) => {
+                const x = (e.clientX - window.innerWidth / 2) * 0.015;
+                const y = (e.clientY - window.innerHeight / 2) * 0.015;
+
+                gsap.to(".hero-visual", { x: -x * 3, y: -y * 3, duration: 1.5 });
+                gsap.to(".grid-pattern", { x: x * 0.5, y: y * 0.5, duration: 2 });
+            });
+
+            // Refresh ScrollTrigger after setup
+            ScrollTrigger.addEventListener('refresh', () => scroll && scroll.update());
+            ScrollTrigger.refresh();
+
+            // ============================================
+            // NEURON NETWORK ANIMATION
+            // ============================================
+            const canvas = document.getElementById('neuron-canvas');
+            const ctx = canvas.getContext('2d');
+
+            // Set canvas size
+            function resizeCanvas() {
+                const parent = canvas.parentElement;
+                canvas.width = parent.offsetWidth;
+                canvas.height = parent.offsetHeight;
+            }
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            // Neuron particles
+            const neurons = [];
+            const neuronCount = 80;
+            const connectionDistance = 150;
+            const magneticDistance = 200;
+            const magneticStrength = 0.05;
+
+            class Neuron {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.vx = (Math.random() - 0.5) * 0.5;
+                    this.vy = (Math.random() - 0.5) * 0.5;
+                    this.radius = Math.random() * 2 + 1;
+                }
+
+                update() {
+                    // Natural movement - no cursor attraction
+                    this.x += this.vx;
+                    this.y += this.vy;
+
+                    // Bounce off edges
+                    if (this.x < 0 || this.x > canvas.width) {
+                        this.vx *= -1;
+                        this.x = Math.max(0, Math.min(canvas.width, this.x));
+                    }
+                    if (this.y < 0 || this.y > canvas.height) {
+                        this.vy *= -1;
+                        this.y = Math.max(0, Math.min(canvas.height, this.y));
+                    }
+                }
+
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = 'rgba(26, 47, 251, 0.6)';
+                    ctx.fill();
+                }
+            }
+
+            // Create neurons
+            for (let i = 0; i < neuronCount; i++) {
+                neurons.push(new Neuron());
+            }
+
+            // Animation loop
+            function animateNeurons() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                // Calculate local mouse position relative to canvas
+                const rect = canvas.getBoundingClientRect();
+                const localMouseX = mouseX - rect.left;
+                const localMouseY = mouseY - rect.top;
+
+                // Only animate if canvas is visible to save performance
+                if (rect.bottom > 0 && rect.top < window.innerHeight) {
+                    // Update and draw neurons
+                    neurons.forEach(neuron => {
+                        neuron.update();
+                        neuron.draw();
+                    });
+
+                    // Draw connections
+                    for (let i = 0; i < neurons.length; i++) {
+                        for (let j = i + 1; j < neurons.length; j++) {
+                            const dx = neurons[i].x - neurons[j].x;
+                            const dy = neurons[i].y - neurons[j].y;
+                            const distance = Math.sqrt(dx * dx + dy * dy);
+
+                            if (distance < connectionDistance) {
+                                const opacity = (1 - distance / connectionDistance) * 0.3;
+                                ctx.beginPath();
+                                ctx.moveTo(neurons[i].x, neurons[i].y);
+                                ctx.lineTo(neurons[j].x, neurons[j].y);
+                                ctx.strokeStyle = `rgba(116, 55, 255, ${opacity})`;
+                                ctx.lineWidth = 1;
+                                ctx.stroke();
+                            }
+                        }
+
+                        // Connect to cursor if close (using local coordinates)
+                        const dx = neurons[i].x - localMouseX;
+                        const dy = neurons[i].y - localMouseY;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+
+                        if (distance < connectionDistance) {
+                            const opacity = (1 - distance / connectionDistance) * 0.5;
+                            ctx.beginPath();
+                            ctx.moveTo(neurons[i].x, neurons[i].y);
+                            ctx.lineTo(localMouseX, localMouseY);
+                            ctx.strokeStyle = `rgba(193, 255, 0, ${opacity})`;
+                            ctx.lineWidth = 2;
+                            ctx.stroke();
+                        }
+                    }
+                }
+
+                requestAnimationFrame(animateNeurons);
+            }
+            animateNeurons();
+        });
+    </script>
+</body>
+
+</html>
