@@ -159,3 +159,15 @@ body {
         box-shadow: 0 0 30px rgba(168, 85, 247, 0.8);
     }
 }
+
+.mobile-link {
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
+    width: fit-content;
+}
+
+.mobile-link:hover {
+    color: #1a2ffb;
+    border-color: #1a2ffb;
+    padding-left: 10px;
+}

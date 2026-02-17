@@ -93,16 +93,51 @@
                         class="text-sm font-medium text-gray-700 hover:text-brand-400 transition-colors">Work</a>
                     <a href="#about"
                         class="text-sm font-medium text-gray-700 hover:text-brand-400 transition-colors">About</a>
-                    <a href="mailto:hello@techkarigar.com"
+                    <a href="mailto:info@techkarigar.com"
                         class="px-5 py-2.5 glass rounded-full text-sm font-semibold hover:border-brand-500/50 hover:bg-brand-500/5 transition-all duration-300">Start
                         a Project</a>
                 </div>
 
-                <button class="md:hidden w-10 h-10 glass rounded-lg flex items-center justify-center">
+                <button id="mobile-menu-btn"
+                    class="md:hidden w-10 h-10 bg-white border border-gray-200 hover:bg-gray-50 shadow-sm rounded-lg flex items-center justify-center text-gray-800 transition-colors">
                     <i data-lucide="menu" class="w-5 h-5"></i>
                 </button>
             </nav>
         </header>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="fixed inset-0 z-[60] hidden">
+            <div class="absolute inset-0 bg-white/95 backdrop-blur-xl"></div>
+            <div class="relative h-full flex flex-col p-10">
+                <div class="flex items-center justify-between mb-12">
+                    <a href="#" class="flex items-center space-x-3">
+                        <div class="w-10 h-10 glass rounded-xl flex items-center justify-center">
+                            <i data-lucide="wrench" class="w-5 h-5 text-brand-400"></i>
+                        </div>
+                        <span class="font-display text-2xl font-bold tracking-tight text-gray-900 italic">Tech<span
+                                class="text-brand-400">karigar</span></span>
+                    </a>
+                    <button id="mobile-menu-close"
+                        class="w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-lg flex items-center justify-center text-gray-800 transition-colors">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+
+                <div class="flex flex-col space-y-8">
+                    <a href="#services"
+                        class="mobile-link font-display text-4xl font-bold text-gray-900 italic">Services</a>
+                    <a href="#work" class="mobile-link font-display text-4xl font-bold text-gray-900 italic">Work</a>
+                    <a href="#about" class="mobile-link font-display text-4xl font-bold text-gray-900 italic">About</a>
+                    <a href="mailto:info@techkarigar.com"
+                        class="px-8 py-4 bg-gradient-to-r from-brand-400 to-brand-500 text-white rounded-full font-semibold inline-block text-center mt-4">Start
+                        a Project</a>
+                </div>
+
+                <div class="mt-auto pt-10 border-t border-gray-100 italic">
+                    <p class="text-sm text-gray-500">Bespoke digital artistry for the modern web.</p>
+                </div>
+            </div>
+        </div>
 
         <!-- Hero Section -->
         <section class="min-h-screen flex items-center justify-center px-10 pt-32 pb-20 relative overflow-hidden">
@@ -503,6 +538,7 @@
                             Bespoke digital artistry for high-intent niches. We build the lead machines and AI workflows
                             that scale modern businesses.
                         </p>
+                        <!-- Social links (Commented for future)
                         <div class="flex space-x-4">
                             <a href="#"
                                 class="w-10 h-10 glass rounded-full flex items-center justify-center text-gray-700 hover:text-brand-400 hover:border-brand-500/50 transition-all">
@@ -517,6 +553,7 @@
                                 <i data-lucide="github" class="w-5 h-5"></i>
                             </a>
                         </div>
+                        -->
                     </div>
 
                     <div>
@@ -536,12 +573,13 @@
                         <ul class="space-y-4 text-sm text-gray-600">
                             <li class="flex items-center space-x-3">
                                 <i data-lucide="mail" class="w-4 h-4 text-brand-400"></i>
-                                <a href="mailto:hello@techkarigar.com"
-                                    class="hover:text-brand-400 transition-colors">hello@techkarigar.com</a>
+                                <a href="mailto:info@techkarigar.com"
+                                    class="hover:text-brand-400 transition-colors">info@techkarigar.com</a>
                             </li>
                             <li class="flex items-center space-x-3">
                                 <i data-lucide="map-pin" class="w-4 h-4 text-brand-400"></i>
-                                <span>San Francisco & Remote</span>
+                                <!-- <span>San Francisco & Remote</span> (Commented for future) -->
+                                <span>Serving clients across India and globally</span>
                             </li>
                         </ul>
                     </div>

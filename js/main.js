@@ -55,6 +55,33 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
 
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', () => {
+    // Mobile Menu Logic (Moved to top for reliability)
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    if (mobileMenuBtn && mobileMenu && mobileMenuClose) {
+        const openMenu = () => {
+            mobileMenu.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+            // Re-run icon creation to ensure icons in the menu are rendered
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        };
+
+        const closeMenu = () => {
+            mobileMenu.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        };
+
+        mobileMenuBtn.addEventListener('click', openMenu);
+        mobileMenuClose.addEventListener('click', closeMenu);
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+    }
+
     // Initialize Locomotive Scroll v5 (buttery smooth scrolling)
     let scroll;
     if (typeof LocomotiveScroll !== 'undefined') {
