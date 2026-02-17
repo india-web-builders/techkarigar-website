@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let prevX = 0, prevY = 0;
     let velocity = 0;
 
-    if (dot && outline) {
+    if (dot && outline && window.matchMedia('(pointer: fine)').matches) {
         window.addEventListener("mousemove", (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Magnetic Buttons with Minimal Movement
-    if (typeof gsap !== 'undefined') {
+    if (typeof gsap !== 'undefined' && window.matchMedia('(pointer: fine)').matches) {
         const allMagnetics = document.querySelectorAll('.glass, .group, a, button');
         const footer = document.querySelector('footer');
         const magnetics = Array.from(allMagnetics).filter(el => {

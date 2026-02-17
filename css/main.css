@@ -48,8 +48,12 @@ body {
     background: linear-gradient(135deg, #ffffff 0%, #f0f1fa 50%, #e4e6ef 100%);
     background-attachment: fixed;
     color: #000000;
-    cursor: none;
-    /* Hide default cursor */
+}
+
+@media (pointer: fine) {
+    body {
+        cursor: none;
+    }
 }
 
 
@@ -59,32 +63,41 @@ body {
     display: none;
 }
 
-/* Custom Cursor */
+/* Custom Cursor - Only visible on desktop */
 .cursor-dot,
 .cursor-outline {
-    pointer-events: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-out;
-    z-index: 9999;
+    display: none;
 }
 
-.cursor-dot {
-    width: 10px;
-    height: 10px;
-    background: linear-gradient(135deg, #1a2ffb, #7437ff);
-    box-shadow: 0 0 30px rgba(26, 47, 251, 0.8);
-}
+@media (pointer: fine) {
 
-.cursor-outline {
-    width: 45px;
-    height: 45px;
-    border: 3px solid rgba(26, 47, 251, 0.6);
-    transition: all 0.15s ease-out;
+    .cursor-dot,
+    .cursor-outline {
+        display: block;
+        pointer-events: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out, transform 0.3s ease-out;
+        z-index: 9999;
+    }
+
+    .cursor-dot {
+        width: 10px;
+        height: 10px;
+        background: linear-gradient(135deg, #1a2ffb, #7437ff);
+        box-shadow: 0 0 30px rgba(26, 47, 251, 0.8);
+    }
+
+    .cursor-outline {
+        width: 45px;
+        height: 45px;
+        border: 3px solid rgba(26, 47, 251, 0.6);
+        transition: all 0.15s ease-out;
+    }
 }
 
 /* Grid Pattern */
