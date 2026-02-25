@@ -97,15 +97,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Sync Locomotive Scroll with GSAP ScrollTrigger
             if (typeof ScrollTrigger !== 'undefined') {
+                // Locomotive v5 (Lenis) uses native scroll, so we don't need scrollerProxy
+                // Just update ScrollTrigger on scroll
                 scroll.on('scroll', ScrollTrigger.update);
-                ScrollTrigger.scrollerProxy(document.documentElement, {
-                    scrollTop(value) {
-                        return arguments.length ? scroll.scrollTo(value, { duration: 0, disableLerp: true }) : scroll.scroll;
-                    },
-                    getBoundingClientRect() {
-                        return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
-                    }
-                });
             }
         } catch (e) {
             console.log('Locomotive Scroll initialization failed', e);
@@ -256,66 +250,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
+    }
 
-        // Cinematic Scroll Reveal with Stagger
-        gsap.utils.toArray('.service-card').forEach((card) => {
-            gsap.fromTo(card,
-                { opacity: 0, y: 100, rotateX: -20, scale: 0.9 },
-                {
-                    opacity: 1,
-                    y: 0,
-                    rotateX: 0,
-                    scale: 1,
-                    duration: 1.5,
-                    ease: "expo.out",
-                    scrollTrigger: {
-                        trigger: card,
-                        start: "top 80%",
-                        end: "top 20%",
-                        toggleActions: "play none none reverse"
-                    }
-                }
-            );
-        });
-
-        // Project Cards with Parallax
-        gsap.utils.toArray('.project-card').forEach((card, i) => {
-            gsap.fromTo(card,
-                { opacity: 0, y: 150, scale: 0.8, rotation: i % 2 === 0 ? -5 : 5 },
-                {
-                    opacity: 1,
-                    y: 0,
-                    scale: 1,
-                    rotation: 0,
-                    duration: 1.8,
-                    ease: "expo.out",
-                    scrollTrigger: {
-                        trigger: card,
-                        start: "top 85%",
-                        toggleActions: "play none none reverse"
-                    }
-                }
-            );
-        });
-
-        // Testimonials with Wave Effect
-        gsap.utils.toArray('.testimonial').forEach((item, i) => {
-            gsap.fromTo(item,
-                { opacity: 0, x: i % 2 === 0 ? -100 : 100, rotateY: i % 2 === 0 ? -20 : 20 },
-                {
-                    opacity: 1,
-                    x: 0,
-                    rotateY: 0,
-                    duration: 1.5,
-                    ease: "expo.out",
-                    scrollTrigger: {
-                        trigger: item,
-                        start: "top 80%",
-                        toggleActions: "play none none reverse"
-                    }
-                }
-            );
-        });
+    if (typeof gsap !== 'undefined') {
+        // FAQ Accordion Animation is kept as it is interaction based
     }
 
     // FAQ Accordion Animation
