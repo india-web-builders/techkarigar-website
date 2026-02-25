@@ -199,58 +199,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Magnetic Buttons with Minimal Movement
-    if (typeof gsap !== 'undefined' && window.matchMedia('(pointer: fine)').matches) {
-        const allMagnetics = document.querySelectorAll('.glass, .group, a, button');
-        const footer = document.querySelector('footer');
-        const magnetics = Array.from(allMagnetics).filter(el => {
-            if (footer && footer.contains(el)) return false;
-            if (el.textContent && el.textContent.includes('Award-Winning Design Standards')) return false;
-            if (el.closest && el.closest('[class*="glass"]') &&
-                el.closest('[class*="glass"]').textContent.includes('Award-Winning Design Standards')) return false;
-            return true;
-        });
+    // Magnetic effect removed as per user request
 
-        magnetics.forEach(el => {
-            el.addEventListener('mousemove', (e) => {
-                const rect = el.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-
-                gsap.to(el, {
-                    x: x * 0.08,
-                    y: y * 0.08,
-                    duration: 0.5,
-                    ease: "power2.out"
-                });
-                if (outline) {
-                    gsap.to(outline, {
-                        scale: 1.3,
-                        borderColor: '#a855f7',
-                        borderWidth: '3px',
-                        duration: 0.3
-                    });
-                }
-            });
-
-            el.addEventListener('mouseleave', () => {
-                gsap.to(el, {
-                    x: 0,
-                    y: 0,
-                    duration: 0.6,
-                    ease: "power2.out"
-                });
-                if (outline) {
-                    gsap.to(outline, {
-                        scale: 1,
-                        borderColor: 'rgba(192, 132, 252, 0.4)',
-                        borderWidth: '2px',
-                        duration: 0.3
-                    });
-                }
-            });
-        });
-    }
 
     if (typeof gsap !== 'undefined') {
         // FAQ Accordion Animation is kept as it is interaction based
