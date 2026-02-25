@@ -36,15 +36,34 @@
 
     <!-- Preload Critical Fonts -->
     <link rel="preload"
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@300..700&display=swap"
         as="style">
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Space+Grotesk:wght@300..700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@300..700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
         rel="stylesheet">
 
     <!-- Tailwind CSS (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Inter"', 'sans-serif'],
+                        display: ['"Space Grotesk"', 'sans-serif'],
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f1fa', 100: '#e4e6ef', 200: '#c1ff00', 300: '#07f78c', 400: '#1a2ffb',
+                            500: '#7437ff', 600: '#8832f7', 700: '#0016ec', 800: '#ff4c41', 900: '#000000',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 
     <!-- Custom Styles & Scripts -->
     <link rel="stylesheet" href="css/main.css">
@@ -333,7 +352,7 @@
                 <div class="flex flex-col md:flex-row items-end justify-between mb-12 md:mb-24 gap-8">
                     <div class="max-w-2xl">
                         <h2
-                            class="font-outfit text-4xl md:text-5xl font-bold mb-6 text-gray-900 uppercase italic tracking-tight">
+                            class="font-display text-4xl md:text-5xl font-bold mb-6 text-gray-900 uppercase italic tracking-tight">
                             Karigar <span class="text-brand-400">Proof</span>
                         </h2>
                         <p class="text-gray-700 text-lg font-light leading-relaxed">
@@ -562,7 +581,7 @@
                     </div>
 
                     <div>
-                        <h4 class="font-outfit font-bold text-gray-900 uppercase tracking-widest text-xs mb-8">Niches
+                        <h4 class="font-display font-bold text-gray-900 uppercase tracking-widest text-xs mb-8">Niches
                         </h4>
                         <ul class="space-y-4 text-sm text-gray-600">
                             <li><a href="mailto:info@techkarigar.com?subject=Inquiry: AI for Professionals&body=Hi Techkarigar team,%0D%0A%0D%0AI'd like to discuss AI solutions for my professional practice...%0D%0A%0D%0ABest regards,"
@@ -577,7 +596,7 @@
                     </div>
 
                     <div>
-                        <h4 class="font-outfit font-bold text-gray-900 uppercase tracking-widest text-xs mb-8">Contacts
+                        <h4 class="font-display font-bold text-gray-900 uppercase tracking-widest text-xs mb-8">Contacts
                         </h4>
                         <ul class="space-y-4 text-sm text-gray-600">
                             <li class="flex items-center space-x-3">

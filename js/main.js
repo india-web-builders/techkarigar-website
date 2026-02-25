@@ -1,48 +1,4 @@
-// Tailwind Configuration
-if (typeof tailwind !== 'undefined') {
-    tailwind.config = {
-        theme: {
-            extend: {
-                fontFamily: {
-                    sans: ['Space Grotesk', 'sans-serif'],
-                    display: ['Playfair Display', 'serif'],
-                    serif: ['Cormorant Garamond', 'serif'],
-                },
-                colors: {
-                    brand: {
-                        50: '#f0f1fa',
-                        100: '#e4e6ef',
-                        200: '#c1ff00',
-                        300: '#07f78c',
-                        400: '#1a2ffb',
-                        500: '#7437ff',
-                        600: '#8832f7',
-                        700: '#0016ec',
-                        800: '#ff4c41',
-                        900: '#000000',
-                        white: '#ffffff',
-                        light: '#f0f1fa',
-                    }
-                },
-                animation: {
-                    'gradient': 'gradient 8s linear infinite',
-                    'float': 'float 6s ease-in-out infinite',
-                },
-                keyframes: {
-                    gradient: {
-                        '0%, 100%': { 'background-size': '200% 200%', 'background-position': 'left center' },
-                        '50%': { 'background-size': '200% 200%', 'background-position': 'right center' },
-                    },
-                    float: {
-                        '0%, 100%': { transform: 'translateY(0)' },
-                        '50%': { transform: 'translateY(-20px)' },
-                    }
-                }
-            }
-        }
-    }
-}
-
+// Tailwind Configuration moved to inline script in HTML files
 // Initialize Lucide
 if (typeof lucide !== 'undefined') {
     lucide.createIcons();
