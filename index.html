@@ -66,8 +66,18 @@
 
     <!-- Custom Styles & Scripts -->
     <link rel="stylesheet" href="css/main.css">
-    <script src="js/main.js" defer></script>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/locomotive-scroll@5.0.0-beta.13/dist/locomotive-scroll.min.css">
 
+    <!-- Deferred Libraries for Lightning Fast Loading -->
+    <script src="https://unpkg.com/split-type" defer></script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@5.0.0-beta.13/dist/locomotive-scroll.min.js"
+        defer></script>
+
+    <script src="js/main.js" defer></script>
 
 </head>
 
@@ -76,8 +86,7 @@
     <!-- Content will be injected here -->
 
     <!-- Custom Cursor -->
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
+    <div class="custom-cursor"></div>
 
     <!-- Neuron Network Canvas Background -->
 
@@ -93,11 +102,11 @@
         </div>
 
         <!-- Header -->
-        <header class="fixed top-0 w-full z-50 py-4 px-4 md:px-10 transition-all duration-300" id="navbar">
+        <header class="fixed top-0 w-full z-50 py-4 px-4 md:px-10 transition-all duration-100" id="navbar">
             <nav class="max-w-7xl mx-auto flex items-center justify-between">
                 <a href="#" class="flex items-center space-x-2 group">
                     <div
-                        class="w-14 h-14 glass rounded-xl flex items-center justify-center p-2 group-hover:bg-brand-500/20 transition-all duration-300">
+                        class="w-14 h-14 glass rounded-xl flex items-center justify-center p-2 group-hover:bg-brand-500/20 transition-all duration-100">
                         <img src="assets/images/t-logo-alpha.png" alt="Techkarigar Logo"
                             class="w-full h-full object-contain">
                     </div>
@@ -113,7 +122,7 @@
                     <a href="#about"
                         class="text-sm font-medium text-gray-700 hover:text-brand-400 transition-colors">About</a>
                     <a href="mailto:info@techkarigar.com"
-                        class="px-5 py-2.5 glass rounded-full text-sm font-semibold hover:border-brand-500/50 hover:bg-brand-500/5 transition-all duration-300">Start
+                        class="px-5 py-2.5 glass rounded-full text-sm font-semibold hover:border-brand-500/50 hover:bg-brand-500/5 transition-all duration-100">Start
                         a Project</a>
                 </div>
 
@@ -187,7 +196,7 @@
                 <div
                     class="hero-btns flex flex-col sm:flex-row items-center justify-center gap-6 opacity-0 translate-y-10">
                     <a href="#work"
-                        class="group px-8 py-4 bg-gradient-to-r from-brand-400 to-brand-500 text-white rounded-full font-semibold hover:shadow-2xl hover:shadow-brand-400/50 transition-all duration-300 hover:scale-105">
+                        class="group px-8 py-4 bg-gradient-to-r from-brand-400 to-brand-500 text-white rounded-full font-semibold hover:shadow-2xl hover:shadow-brand-400/50 transition-all duration-100 hover:scale-105">
                         <span class="flex items-center space-x-2">
                             <span>View Our Work</span>
                             <i data-lucide="arrow-right"
@@ -195,7 +204,7 @@
                         </span>
                     </a>
                     <a href="#services"
-                        class="px-8 py-4 glass rounded-full font-semibold text-gray-900 hover:border-brand-400 hover:bg-brand-400/10 transition-all duration-300">Explore
+                        class="px-8 py-4 glass rounded-full font-semibold text-gray-900 hover:border-brand-400 hover:bg-brand-400/10 transition-all duration-100">Explore
                         Services</a>
                 </div>
                 <div class="hero-visual mt-20 relative">
@@ -229,9 +238,9 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Website Development -->
                     <div
-                        class="service-card group p-8 glass rounded-[40px] hover:bg-white/[0.05] transition-all duration-500 border-white/5 relative overflow-hidden">
+                        class="service-card group p-8 glass rounded-[40px] hover:bg-white/[0.05] transition-all duration-150 border-white/5 relative overflow-hidden">
                         <div
-                            class="w-16 h-16 glass rounded-2xl flex items-center justify-center mb-8 group-hover:bg-brand-500/20 transition-all duration-300">
+                            class="w-16 h-16 glass rounded-2xl flex items-center justify-center mb-8 group-hover:bg-brand-500/20 transition-all duration-100">
                             <i data-lucide="layout" class="w-8 h-8 text-brand-400"></i>
                         </div>
                         <h3
@@ -245,9 +254,9 @@
 
                     <!-- Mobile App Development -->
                     <div
-                        class="service-card group p-8 glass rounded-[40px] hover:bg-white/[0.05] transition-all duration-500 border-white/5 relative overflow-hidden">
+                        class="service-card group p-8 glass rounded-[40px] hover:bg-white/[0.05] transition-all duration-150 border-white/5 relative overflow-hidden">
                         <div
-                            class="w-16 h-16 glass rounded-2xl flex items-center justify-center mb-8 group-hover:bg-brand-500/20 transition-all duration-300">
+                            class="w-16 h-16 glass rounded-2xl flex items-center justify-center mb-8 group-hover:bg-brand-500/20 transition-all duration-100">
                             <i data-lucide="smartphone" class="w-8 h-8 text-brand-400"></i>
                         </div>
                         <h3
@@ -261,9 +270,9 @@
 
                     <!-- Digital Solutions -->
                     <div
-                        class="service-card group p-8 glass rounded-[40px] hover:bg-white/[0.05] transition-all duration-500 border-white/5 relative overflow-hidden">
+                        class="service-card group p-8 glass rounded-[40px] hover:bg-white/[0.05] transition-all duration-150 border-white/5 relative overflow-hidden">
                         <div
-                            class="w-16 h-16 glass rounded-2xl flex items-center justify-center mb-8 group-hover:bg-brand-500/20 transition-all duration-300">
+                            class="w-16 h-16 glass rounded-2xl flex items-center justify-center mb-8 group-hover:bg-brand-500/20 transition-all duration-100">
                             <i data-lucide="globe" class="w-8 h-8 text-brand-400"></i>
                         </div>
                         <h3
@@ -277,9 +286,9 @@
 
                     <!-- SEO -->
                     <div
-                        class="service-card group p-8 glass rounded-[40px] hover:bg-white/[0.05] transition-all duration-500 border-white/5 relative overflow-hidden">
+                        class="service-card group p-8 glass rounded-[40px] hover:bg-white/[0.05] transition-all duration-150 border-white/5 relative overflow-hidden">
                         <div
-                            class="w-16 h-16 glass rounded-2xl flex items-center justify-center mb-8 group-hover:bg-brand-500/20 transition-all duration-300">
+                            class="w-16 h-16 glass rounded-2xl flex items-center justify-center mb-8 group-hover:bg-brand-500/20 transition-all duration-100">
                             <i data-lucide="search" class="w-8 h-8 text-brand-400"></i>
                         </div>
                         <h3
@@ -293,9 +302,9 @@
 
                     <!-- Digital Marketing -->
                     <div
-                        class="service-card group p-8 glass rounded-[40px] hover:bg-white/[0.05] transition-all duration-500 border-white/5 relative overflow-hidden">
+                        class="service-card group p-8 glass rounded-[40px] hover:bg-white/[0.05] transition-all duration-150 border-white/5 relative overflow-hidden">
                         <div
-                            class="w-16 h-16 glass rounded-2xl flex items-center justify-center mb-8 group-hover:bg-brand-500/20 transition-all duration-300">
+                            class="w-16 h-16 glass rounded-2xl flex items-center justify-center mb-8 group-hover:bg-brand-500/20 transition-all duration-100">
                             <i data-lucide="megaphone" class="w-8 h-8 text-brand-400"></i>
                         </div>
                         <h3
@@ -309,9 +318,9 @@
 
                     <!-- Automation Solutions -->
                     <div
-                        class="service-card group p-8 glass rounded-[40px] hover:bg-white/[0.05] transition-all duration-500 border-white/5 relative overflow-hidden">
+                        class="service-card group p-8 glass rounded-[40px] hover:bg-white/[0.05] transition-all duration-150 border-white/5 relative overflow-hidden">
                         <div
-                            class="w-16 h-16 glass rounded-2xl flex items-center justify-center mb-8 group-hover:bg-brand-500/20 transition-all duration-300">
+                            class="w-16 h-16 glass rounded-2xl flex items-center justify-center mb-8 group-hover:bg-brand-500/20 transition-all duration-100">
                             <i data-lucide="cpu" class="w-8 h-8 text-brand-400"></i>
                         </div>
                         <h3
@@ -325,10 +334,10 @@
 
                     <!-- Office Work Automation -->
                     <div
-                        class="service-card group p-8 glass rounded-[40px] md:col-span-2 lg:col-span-3 hover:bg-white/[0.05] transition-all duration-500 border-white/5 border-t-brand-500/20 relative overflow-hidden">
+                        class="service-card group p-8 glass rounded-[40px] md:col-span-2 lg:col-span-3 hover:bg-white/[0.05] transition-all duration-150 border-white/5 border-t-brand-500/20 relative overflow-hidden">
                         <div class="flex flex-col md:flex-row items-start md:items-center gap-8">
                             <div
-                                class="w-16 h-16 glass rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-brand-500/20 transition-all duration-300">
+                                class="w-16 h-16 glass rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-brand-500/20 transition-all duration-100">
                                 <i data-lucide="zap" class="w-8 h-8 text-brand-400"></i>
                             </div>
                             <div>
@@ -342,7 +351,7 @@
                             </div>
                             <div class="mt-auto md:mt-0 md:ml-auto">
                                 <a href="mailto:info@techkarigar.com"
-                                    class="px-6 py-3 bg-brand-400 text-white rounded-full text-sm font-semibold hover:bg-brand-500 transition-all duration-300 inline-block">Save
+                                    class="px-6 py-3 bg-brand-400 text-white rounded-full text-sm font-semibold hover:bg-brand-500 transition-all duration-100 inline-block">Save
                                     Time Now</a>
                             </div>
                         </div>
@@ -393,12 +402,12 @@
                         </div>
                         <div class="w-full md:w-1/2 order-1 md:order-2">
                             <div
-                                class="glass p-10 md:p-16 rounded-[40px] relative overflow-hidden border-white/5 border-t-brand-400/30 group-hover:bg-white/[0.05] transition-all duration-500">
+                                class="glass p-10 md:p-16 rounded-[40px] relative overflow-hidden border-white/5 border-t-brand-400/30 group-hover:bg-white/[0.05] transition-all duration-150">
                                 <div
-                                    class="absolute -right-20 -top-20 w-64 h-64 bg-brand-400/20 rounded-full blur-3xl group-hover:bg-brand-400/30 transition-all duration-500">
+                                    class="absolute -right-20 -top-20 w-64 h-64 bg-brand-400/20 rounded-full blur-3xl group-hover:bg-brand-400/30 transition-all duration-150">
                                 </div>
                                 <i data-lucide="globe"
-                                    class="w-24 h-24 text-brand-400 mb-8 relative z-10 transition-transform duration-500 group-hover:scale-110"></i>
+                                    class="w-24 h-24 text-brand-400 mb-8 relative z-10 transition-transform duration-150 group-hover:scale-110"></i>
                                 <div
                                     class="relative z-10 text-4xl md:text-7xl font-display font-bold text-gray-900 group-hover:text-brand-400 transition-colors">
                                     100+</div>
@@ -412,12 +421,12 @@
                     <div class="flex flex-col md:flex-row items-center gap-12 group">
                         <div class="w-full md:w-1/2 hidden md:block">
                             <div
-                                class="glass p-10 md:p-16 rounded-[40px] relative overflow-hidden border-white/5 border-t-brand-500/30 group-hover:bg-white/[0.05] transition-all duration-500">
+                                class="glass p-10 md:p-16 rounded-[40px] relative overflow-hidden border-white/5 border-t-brand-500/30 group-hover:bg-white/[0.05] transition-all duration-150">
                                 <div
-                                    class="absolute -left-20 -bottom-20 w-64 h-64 bg-brand-500/20 rounded-full blur-3xl group-hover:bg-brand-500/30 transition-all duration-500">
+                                    class="absolute -left-20 -bottom-20 w-64 h-64 bg-brand-500/20 rounded-full blur-3xl group-hover:bg-brand-500/30 transition-all duration-150">
                                 </div>
                                 <i data-lucide="cpu"
-                                    class="w-24 h-24 text-brand-500 mb-8 relative z-10 transition-transform duration-500 group-hover:scale-110"></i>
+                                    class="w-24 h-24 text-brand-500 mb-8 relative z-10 transition-transform duration-150 group-hover:scale-110"></i>
                                 <div
                                     class="relative z-10 text-4xl md:text-7xl font-display font-bold text-gray-900 group-hover:text-brand-500 transition-colors">
                                     70%</div>
@@ -453,12 +462,12 @@
                         </div>
                         <div class="w-full md:w-1/2 block md:hidden">
                             <div
-                                class="glass p-10 md:p-16 rounded-[40px] relative overflow-hidden border-white/5 border-t-brand-500/30 group-hover:bg-white/[0.05] transition-all duration-500">
+                                class="glass p-10 md:p-16 rounded-[40px] relative overflow-hidden border-white/5 border-t-brand-500/30 group-hover:bg-white/[0.05] transition-all duration-150">
                                 <div
-                                    class="absolute -left-20 -bottom-20 w-64 h-64 bg-brand-500/20 rounded-full blur-3xl group-hover:bg-brand-500/30 transition-all duration-500">
+                                    class="absolute -left-20 -bottom-20 w-64 h-64 bg-brand-500/20 rounded-full blur-3xl group-hover:bg-brand-500/30 transition-all duration-150">
                                 </div>
                                 <i data-lucide="cpu"
-                                    class="w-24 h-24 text-brand-500 mb-8 relative z-10 transition-transform duration-500 group-hover:scale-110"></i>
+                                    class="w-24 h-24 text-brand-500 mb-8 relative z-10 transition-transform duration-150 group-hover:scale-110"></i>
                                 <div
                                     class="relative z-10 text-4xl md:text-7xl font-display font-bold text-gray-900 group-hover:text-brand-500 transition-colors">
                                     70%</div>
@@ -498,12 +507,12 @@
                         </div>
                         <div class="w-full md:w-1/2 order-1 md:order-2">
                             <div
-                                class="glass p-10 md:p-16 rounded-[40px] relative overflow-hidden border-white/5 border-t-brand-600/30 group-hover:bg-white/[0.05] transition-all duration-500">
+                                class="glass p-10 md:p-16 rounded-[40px] relative overflow-hidden border-white/5 border-t-brand-600/30 group-hover:bg-white/[0.05] transition-all duration-150">
                                 <div
-                                    class="absolute -right-20 -bottom-20 w-64 h-64 bg-brand-600/20 rounded-full blur-3xl group-hover:bg-brand-600/30 transition-all duration-500">
+                                    class="absolute -right-20 -bottom-20 w-64 h-64 bg-brand-600/20 rounded-full blur-3xl group-hover:bg-brand-600/30 transition-all duration-150">
                                 </div>
                                 <i data-lucide="sparkles"
-                                    class="w-24 h-24 text-brand-600 mb-8 relative z-10 transition-transform duration-500 group-hover:scale-110"></i>
+                                    class="w-24 h-24 text-brand-600 mb-8 relative z-10 transition-transform duration-150 group-hover:scale-110"></i>
                                 <div
                                     class="relative z-10 text-4xl md:text-7xl font-display font-bold text-gray-900 group-hover:text-brand-600 transition-colors">
                                     10x</div>
@@ -522,7 +531,7 @@
                     <div class="md:col-span-2">
                         <a href="#" class="flex items-center space-x-2 mb-8 group">
                             <div
-                                class="w-14 h-14 glass rounded-xl flex items-center justify-center group-hover:bg-brand-500/20 transition-all duration-300 p-2">
+                                class="w-14 h-14 glass rounded-xl flex items-center justify-center group-hover:bg-brand-500/20 transition-all duration-100 p-2">
                                 <img src="assets/images/t-logo-alpha.png" alt="Techkarigar Logo"
                                     class="w-full h-full object-contain">
                             </div>
@@ -676,15 +685,7 @@
     ]
     </script>
 
-    <!-- Scripts -->
-    <script src="https://unpkg.com/split-type"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <!-- Locomotive Scroll v5 (built on Lenis) -->
-    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@5.0.0-beta.13/dist/locomotive-scroll.min.js"></script>
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/locomotive-scroll@5.0.0-beta.13/dist/locomotive-scroll.min.css">
+    <!-- Removed scripts to <head> with defer for performance -->
 
 </body>
 

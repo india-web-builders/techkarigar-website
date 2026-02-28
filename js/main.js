@@ -1,4 +1,3 @@
-// Tailwind Configuration moved to inline script in HTML files
 // Initialize Lucide
 if (typeof lucide !== 'undefined') {
     lucide.createIcons();
@@ -9,9 +8,24 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
 }
 
+// Global Animation Settings - Tweak these to control speeds site-wide
+const ANIM = {
+    speedMultiplier: 0.5, // Lower is faster. 0.5 = 2x speed, 1.0 = normal speed.
+    scrollDuration: 0.8,
+    cursorHoverDuration: 0.2,
+    heroBadgeDuration: 0.5,
+    heroTitleDuration: 0.8,
+    heroTitleStagger: 0.015,
+    heroDescDuration: 0.6,
+    heroBtnsDuration: 0.5,
+    heroVisualDuration: 1.2,
+    parallaxHeroDuration: 0.5,
+    parallaxGridDuration: 0.8
+};
+
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', () => {
-    // Mobile Menu Logic (Moved to top for reliability)
+    // Mobile Menu Logic
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenuClose = document.getElementById('mobile-menu-close');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -21,7 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const openMenu = () => {
             mobileMenu.classList.remove('hidden');
             document.body.classList.add('overflow-hidden');
-            // Re-run icon creation to ensure icons in the menu are rendered
             if (typeof lucide !== 'undefined') lucide.createIcons();
         };
 
@@ -38,131 +51,124 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Initialize Locomotive Scroll v5 (buttery smooth scrolling) - Desktop Only
+    // Initialize Locomotive Scroll v5
     let scroll;
     if (typeof LocomotiveScroll !== 'undefined' && window.innerWidth > 768) {
         try {
             scroll = new LocomotiveScroll({
                 lenisOptions: {
-                    duration: 1.2,
+                    duration: ANIM.scrollDuration * ANIM.speedMultiplier,
                     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
                     smoothWheel: true,
                     smoothTouch: false,
                 },
             });
 
-            // Sync Locomotive Scroll with GSAP ScrollTrigger
-            if (typeof ScrollTrigger !== 'undefined') {
-                // Locomotive v5 (Lenis) uses native scroll, so we don't need scrollerProxy
-                // Just update ScrollTrigger on scroll
-                scroll.on('scroll', ScrollTrigger.update);
-            }
+            scroll.on('scroll', ScrollTrigger.update);
         } catch (e) {
             console.log('Locomotive Scroll initialization failed', e);
         }
     }
 
-    // Enhanced Custom Cursor with Velocity-Based Warp
-    const dot = document.querySelector(".cursor-dot");
-    const outline = document.querySelector(".cursor-outline");
-    let mouseX = 0, mouseY = 0;
-    let prevX = 0, prevY = 0;
-    let velocity = 0;
+    // Custom Cursor Logic - Unified for Zero Lag
+    const cursor = document.querySelector('.custom-cursor');
 
-    if (dot && outline && window.matchMedia('(pointer: fine)').matches) {
+    if (cursor && window.matchMedia('(pointer: fine)').matches) {
+        // Show cursor only and instantly on first mouse move
+        gsap.set(cursor, { opacity: 0 });
+
         window.addEventListener("mousemove", (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
+            gsap.set(cursor, {
+                opacity: 1,
+                x: e.clientX,
+                y: e.clientY,
+                xPercent: -50,
+                yPercent: -50
+            });
+        });
 
-            // Calculate velocity for warp effect
-            const dx = mouseX - prevX;
-            const dy = mouseY - prevY;
-            velocity = Math.sqrt(dx * dx + dy * dy);
-
-            if (typeof gsap !== 'undefined') {
-                gsap.to(dot, { x: mouseX, y: mouseY, duration: 0.1, opacity: 1 });
-                gsap.to(outline, {
-                    x: mouseX,
-                    y: mouseY,
-                    duration: 0.3,
-                    opacity: 1,
-                    scale: 1 + (velocity * 0.01), // Scale based on speed
-                    rotation: velocity * 2 // Rotate based on speed
+        // Hover interactions
+        const interactive = document.querySelectorAll('a, button, .service-card, .mobile-link');
+        interactive.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                gsap.to(cursor, {
+                    scale: 1.6,
+                    borderWidth: '1px',
+                    borderColor: 'rgba(116, 55, 255, 0.6)',
+                    backgroundColor: 'rgba(116, 55, 255, 0.05)',
+                    duration: ANIM.cursorHoverDuration * ANIM.speedMultiplier,
+                    overwrite: 'auto'
                 });
-            }
-
-            prevX = mouseX;
-            prevY = mouseY;
+            });
+            el.addEventListener('mouseleave', () => {
+                gsap.to(cursor, {
+                    scale: 1,
+                    borderWidth: '2px',
+                    borderColor: 'rgba(26, 47, 251, 0.4)',
+                    backgroundColor: 'transparent',
+                    duration: ANIM.cursorHoverDuration * ANIM.speedMultiplier,
+                    overwrite: 'auto'
+                });
+            });
         });
     }
 
-    // Character Hover Zoom Effect - Split ALL headings
-    if (typeof SplitType !== 'undefined') {
-        try {
-            const heroTitle = new SplitType('.hero-title', { types: 'words, chars' });
-            const allHeadings = new SplitType('h2, h3', { types: 'words, chars' });
+    // Hero Section Reveal Animation
+    function initHeroAnimation() {
+        if (typeof SplitType === 'undefined' || typeof gsap === 'undefined') return;
 
-            // Add hover class to all characters
-            document.querySelectorAll('.char').forEach(char => {
-                char.classList.add('char-hover');
-            });
+        const heroTitle = new SplitType('.hero-title', { types: 'chars' });
+        const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
 
-            // Cinematic Hero Sequence with 3D Transforms
-            if (typeof gsap !== 'undefined') {
-                const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
+        tl.to(".hero-badge", { opacity: 1, y: 0, scale: 1, duration: ANIM.heroBadgeDuration * ANIM.speedMultiplier, delay: 0.1 * ANIM.speedMultiplier });
 
-                tl.to(".hero-badge", { opacity: 1, y: 0, scale: 1, duration: 1, delay: 0.3 });
-
-                if (heroTitle && heroTitle.chars) {
-                    tl.fromTo(heroTitle.chars,
-                        {
-                            opacity: 0,
-                            y: 120,
-                            rotateX: -90,
-                            rotateY: 45,
-                            z: -200,
-                        },
-                        {
-                            opacity: 1,
-                            y: 0,
-                            rotateX: 0,
-                            rotateY: 0,
-                            z: 0,
-                            stagger: {
-                                each: 0.03,
-                                from: "random"
-                            },
-                            duration: 1.8,
-                            ease: "expo.out"
-                        },
-                        "-=0.6"
-                    );
-                }
-
-                tl.to(".hero-desc", { opacity: 1, y: 0, duration: 1.2 }, "-=1.2")
-                    .to(".hero-btns", { opacity: 1, y: 0, duration: 1 }, "-=0.9")
-                    .from(".hero-visual", {
-                        opacity: 0,
-                        scale: 0.7,
-                        rotate: -30,
-                        filter: "blur(20px)",
-                        duration: 2.5,
-                        ease: "expo.out"
-                    }, "-=1.8");
-            }
-        } catch (e) {
-            console.log('SplitType or GSAP error', e);
+        if (heroTitle.chars) {
+            tl.fromTo(heroTitle.chars,
+                {
+                    opacity: 0,
+                    y: 20,
+                    rotateX: -90,
+                    z: -500,
+                    filter: "blur(5px)"
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                    rotateX: 0,
+                    z: 0,
+                    filter: "blur(0px)",
+                    stagger: {
+                        each: ANIM.heroTitleStagger * ANIM.speedMultiplier,
+                        from: "random"
+                    },
+                    duration: ANIM.heroTitleDuration * ANIM.speedMultiplier,
+                    ease: "expo.out"
+                },
+                `-=${0.25 * ANIM.speedMultiplier}`
+            );
         }
+        tl.to(".hero-desc", { opacity: 1, y: 0, duration: ANIM.heroDescDuration * ANIM.speedMultiplier }, `-=${0.6 * ANIM.speedMultiplier}`)
+            .to(".hero-btns", { opacity: 1, y: 0, duration: ANIM.heroBtnsDuration * ANIM.speedMultiplier }, `-=${0.4 * ANIM.speedMultiplier}`)
+            .from(".hero-visual", {
+                opacity: 0,
+                scale: 0.95,
+                rotate: -5,
+                filter: "blur(5px)",
+                duration: ANIM.heroVisualDuration * ANIM.speedMultiplier,
+                ease: "expo.out"
+            }, `-=${0.8 * ANIM.speedMultiplier}`);
     }
 
-    // Magnetic effect removed as per user request
-
-
-    if (typeof gsap !== 'undefined') {
-        // FAQ Accordion Animation is kept as it is interaction based
+    // Initialize Animations
+    if (typeof SplitType !== 'undefined') {
+        new SplitType('h2, h3', { types: 'chars' });
+        document.querySelectorAll('.char').forEach(char => {
+            char.classList.add('char-hover');
+        });
+        initHeroAnimation();
     }
 
-    // FAQ Accordion Animation
+    // FAQ Accordion
     document.querySelectorAll('.faq-item').forEach(item => {
         item.addEventListener('click', () => {
             const isActive = item.classList.contains('active');
@@ -171,154 +177,76 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Cinematic Pause States
-    const pauseMarkers = [25, 50, 75].map(percent => {
-        const marker = document.createElement('div');
-        marker.className = 'pause-marker';
-        marker.style.top = `${percent}vh`;
-        document.body.appendChild(marker);
-        return { element: marker, percent };
-    });
-
-    window.addEventListener('scroll', () => {
-        const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-
-        pauseMarkers.forEach(({ element, percent }) => {
-            if (Math.abs(scrollPercent - percent) < 2) {
-                element.classList.add('active');
-            } else {
-                element.classList.remove('active');
-            }
-        });
-
-        // Navbar Evolution
-        const nav = document.getElementById('navbar');
-        if (nav) {
-            if (window.scrollY > 50) {
-                nav.classList.add('glass', 'py-4', 'border-b', 'border-white/5');
-                nav.classList.remove('py-6');
-            } else {
-                nav.classList.remove('glass', 'py-4', 'border-b', 'border-white/5');
-                nav.classList.add('py-6');
-            }
-        }
-    });
-
-    // Parallax Background Movement
+    // Parallax Background
     document.addEventListener("mousemove", (e) => {
         const x = (e.clientX - window.innerWidth / 2) * 0.015;
         const y = (e.clientY - window.innerHeight / 2) * 0.015;
-
         if (typeof gsap !== 'undefined') {
-            gsap.to(".hero-visual", { x: -x * 3, y: -y * 3, duration: 1.5 });
-            gsap.to(".grid-pattern", { x: x * 0.5, y: y * 0.5, duration: 2 });
+            gsap.to(".hero-visual", { x: -x * 3, y: -y * 3, duration: 0.25 });
+            gsap.to(".grid-pattern", { x: x * 0.5, y: y * 0.5, duration: 0.4 });
         }
     });
 
-    // Refresh ScrollTrigger
-    if (typeof ScrollTrigger !== 'undefined') {
-        ScrollTrigger.addEventListener('refresh', () => scroll && scroll.update());
-        ScrollTrigger.refresh();
-    }
-
-    // Neuron Network Animation
-    const canvas = document.getElementById('neuron-canvas');
-    if (canvas) {
-        const ctx = canvas.getContext('2d');
-
-        function resizeCanvas() {
-            const parent = canvas.parentElement;
-            canvas.width = parent.offsetWidth;
-            canvas.height = parent.offsetHeight;
-        }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-
-        const neurons = [];
-        const neuronCount = 80;
-        const connectionDistance = 150;
-
-        class Neuron {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
-                this.radius = Math.random() * 2 + 1;
-            }
-
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-
-                if (this.x < 0 || this.x > canvas.width) {
-                    this.vx *= -1;
-                    this.x = Math.max(0, Math.min(canvas.width, this.x));
-                }
-                if (this.y < 0 || this.y > canvas.height) {
-                    this.vy *= -1;
-                    this.y = Math.max(0, Math.min(canvas.height, this.y));
-                }
-            }
-
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(26, 47, 251, 0.6)';
-                ctx.fill();
-            }
-        }
-
-        for (let i = 0; i < neuronCount; i++) {
-            neurons.push(new Neuron());
-        }
-
-        function animateNeurons() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            const rect = canvas.getBoundingClientRect();
-            const localMouseX = mouseX - rect.left;
-            const localMouseY = mouseY - rect.top;
-
-            if (rect.bottom > 0 && rect.top < window.innerHeight) {
-                neurons.forEach(neuron => {
-                    neuron.update();
-                    neuron.draw();
-                });
-
-                for (let i = 0; i < neurons.length; i++) {
-                    for (let j = i + 1; j < neurons.length; j++) {
-                        const dx = neurons[i].x - neurons[j].x;
-                        const dy = neurons[i].y - neurons[j].y;
-                        const distance = Math.sqrt(dx * dx + dy * dy);
-
-                        if (distance < connectionDistance) {
-                            const opacity = (1 - distance / connectionDistance) * 0.3;
-                            ctx.beginPath();
-                            ctx.moveTo(neurons[i].x, neurons[i].y);
-                            ctx.lineTo(neurons[j].x, neurons[j].y);
-                            ctx.strokeStyle = `rgba(116, 55, 255, ${opacity})`;
-                            ctx.stroke();
-                        }
-                    }
-
-                    const dx = neurons[i].x - localMouseX;
-                    const dy = neurons[i].y - localMouseY;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-
-                    if (distance < connectionDistance) {
-                        const opacity = (1 - distance / connectionDistance) * 0.5;
-                        ctx.beginPath();
-                        ctx.moveTo(neurons[i].x, neurons[i].y);
-                        ctx.lineTo(localMouseX, localMouseY);
-                        ctx.strokeStyle = `rgba(193, 255, 0, ${opacity})`;
-                        ctx.lineWidth = 2;
-                        ctx.stroke();
-                    }
-                }
-            }
-            requestAnimationFrame(animateNeurons);
-        }
-        animateNeurons();
-    }
+    // Canvas Background
+    initCanvas();
 });
+
+function initCanvas() {
+    const canvas = document.getElementById('neuron-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    const particleCount = window.innerWidth < 768 ? 40 : 80;
+
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.vx = (Math.random() - 0.5) * 1.5;
+            this.vy = (Math.random() - 0.5) * 1.5;
+            this.radius = Math.random() * 2 + 1;
+        }
+        update() {
+            this.x += this.vx;
+            this.y += this.vy;
+            if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+            if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+        }
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(116, 55, 255, 0.2)';
+            ctx.fill();
+        }
+    }
+
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+            p.update();
+            p.draw();
+            particles.forEach(p2 => {
+                const dist = Math.sqrt((p.x - p2.x) ** 2 + (p.y - p2.y) ** 2);
+                if (dist < 150) {
+                    ctx.beginPath();
+                    ctx.moveTo(p.x, p.y);
+                    ctx.lineTo(p2.x, p2.y);
+                    ctx.strokeStyle = `rgba(116, 55, 255, ${0.15 * (1 - dist / 150)})`;
+                    ctx.lineWidth = 0.5;
+                    ctx.stroke();
+                }
+            });
+        });
+        requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+    for (let i = 0; i < particleCount; i++) particles.push(new Particle());
+    animate();
+}

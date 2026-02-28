@@ -63,40 +63,32 @@ body {
     display: none;
 }
 
-/* Custom Cursor - Only visible on desktop */
-.cursor-dot,
-.cursor-outline {
-    display: none;
-}
-
+/* Custom Cursor - Unified */
 @media (pointer: fine) {
-
-    .cursor-dot,
-    .cursor-outline {
-        display: block;
+    .custom-cursor {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         pointer-events: none;
         position: fixed;
         top: 0;
         left: 0;
-        transform: translate(-50%, -50%);
+        width: 38px;
+        height: 38px;
+        border: 2px solid rgba(116, 55, 255, 0.5);
         border-radius: 50%;
         opacity: 0;
-        transition: opacity 0.3s ease-in-out, transform 0.3s ease-out;
         z-index: 9999;
+        transition: none;
     }
 
-    .cursor-dot {
-        width: 10px;
-        height: 10px;
-        background: linear-gradient(135deg, #1a2ffb, #7437ff);
-        box-shadow: 0 0 30px rgba(26, 47, 251, 0.8);
-    }
-
-    .cursor-outline {
-        width: 45px;
-        height: 45px;
-        border: 3px solid rgba(26, 47, 251, 0.6);
-        transition: all 0.15s ease-out;
+    .custom-cursor::after {
+        content: '';
+        width: 6px;
+        height: 6px;
+        background: linear-gradient(135deg, #a855f7, #7437ff);
+        border-radius: 50%;
+        box-shadow: 0 0 15px rgba(116, 55, 255, 0.8);
     }
 }
 
