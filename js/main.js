@@ -11,6 +11,8 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
 // Global Animation Settings - Tweak these to control speeds site-wide
 const ANIM = {
     speedMultiplier: 0.5, // Lower is faster. 0.5 = 2x speed, 1.0 = normal speed.
+    cursorThickness: "3px", // Default thickness
+    cursorHoverThickness: "1px", // Thickness when hovering interactive elements
     scrollDuration: 0.8,
     cursorHoverDuration: 0.2,
     heroBadgeDuration: 0.5,
@@ -74,8 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const cursor = document.querySelector('.custom-cursor');
 
     if (cursor && window.matchMedia('(pointer: fine)').matches) {
-        // Show cursor only and instantly on first mouse move
-        gsap.set(cursor, { opacity: 0 });
+        // Show cursor only and instantly on first mouse move and apply config thickness
+        gsap.set(cursor, { opacity: 0, borderWidth: ANIM.cursorThickness });
 
         window.addEventListener("mousemove", (e) => {
             gsap.set(cursor, {
@@ -93,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
             el.addEventListener('mouseenter', () => {
                 gsap.to(cursor, {
                     scale: 1.6,
-                    borderWidth: '1px',
+                    borderWidth: ANIM.cursorHoverThickness,
                     borderColor: 'rgba(116, 55, 255, 0.6)',
                     backgroundColor: 'rgba(116, 55, 255, 0.05)',
                     duration: ANIM.cursorHoverDuration * ANIM.speedMultiplier,
@@ -103,8 +105,8 @@ document.addEventListener('DOMContentLoaded', () => {
             el.addEventListener('mouseleave', () => {
                 gsap.to(cursor, {
                     scale: 1,
-                    borderWidth: '2px',
-                    borderColor: 'rgba(26, 47, 251, 0.4)',
+                    borderWidth: ANIM.cursorThickness,
+                    borderColor: 'rgba(116, 55, 255, 0.5)',
                     backgroundColor: 'transparent',
                     duration: ANIM.cursorHoverDuration * ANIM.speedMultiplier,
                     overwrite: 'auto'
@@ -142,7 +144,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         from: "random"
                     },
                     duration: ANIM.heroTitleDuration * ANIM.speedMultiplier,
-                    ease: "expo.out"
+                    ease: "expo.out",
+                    clearProps: "transform,filter" // Allows CSS hover to work again
                 },
                 `-=${0.25 * ANIM.speedMultiplier}`
             );
@@ -162,10 +165,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize Animations
     if (typeof SplitType !== 'undefined') {
         new SplitType('h2, h3', { types: 'chars' });
+        initHeroAnimation();
+        // Run this after all SplitTypes so .hero-title chars get the hover class
         document.querySelectorAll('.char').forEach(char => {
             char.classList.add('char-hover');
         });
-        initHeroAnimation();
     }
 
     // FAQ Accordion

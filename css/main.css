@@ -75,7 +75,7 @@ body {
         left: 0;
         width: 38px;
         height: 38px;
-        border: 2px solid rgba(116, 55, 255, 0.5);
+        border: 3px solid rgba(116, 55, 255, 0.5);
         border-radius: 50%;
         opacity: 0;
         z-index: 9999;
