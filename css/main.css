@@ -112,6 +112,12 @@ body {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 
+/* Prevent characters from splitting across lines */
+.word {
+    display: inline-block;
+    white-space: nowrap;
+}
+
 /* Character Hover Zoom */
 .char-hover {
     display: inline-block;

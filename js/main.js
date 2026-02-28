@@ -38,9 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Initialize Locomotive Scroll v5 (buttery smooth scrolling)
+    // Initialize Locomotive Scroll v5 (buttery smooth scrolling) - Desktop Only
     let scroll;
-    if (typeof LocomotiveScroll !== 'undefined') {
+    if (typeof LocomotiveScroll !== 'undefined' && window.innerWidth > 768) {
         try {
             scroll = new LocomotiveScroll({
                 lenisOptions: {
@@ -99,8 +99,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Character Hover Zoom Effect - Split ALL headings
     if (typeof SplitType !== 'undefined') {
         try {
-            const heroTitle = new SplitType('.hero-title', { types: 'chars' });
-            const allHeadings = new SplitType('h2, h3', { types: 'chars' });
+            const heroTitle = new SplitType('.hero-title', { types: 'words, chars' });
+            const allHeadings = new SplitType('h2, h3', { types: 'words, chars' });
 
             // Add hover class to all characters
             document.querySelectorAll('.char').forEach(char => {
