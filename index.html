@@ -6,43 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Primary Meta Tags -->
-    <title>Techkarigar | The Technical Artisans for High-Growth Brands</title>
-    <meta name="title" content="Techkarigar | The Technical Artisans for High-Growth Brands">
+    <title>TechKarigar | Digital Solutions for Modern Businesses</title>
+    <meta name="title" content="TechKarigar | Digital Solutions for Modern Businesses">
     <meta name="description"
-        content="Techkarigar builds astoundingly beautiful Web, Mobile, and AI solutions for high-intent niches. From AI automation for law firms to high-conversion landing pages for contractors.">
+        content="TechKarigar builds high-performance websites, mobile apps, SEO, and intelligent automation solutions for businesses across India. Go online, grow digitally.">
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://techkarigar.com/">
-    <meta property="og:title" content="Techkarigar | The Technical Artisans for High-Growth Brands">
+    <meta property="og:title" content="TechKarigar | Digital Solutions for Modern Businesses">
     <meta property="og:description"
-        content="Bespoke digital artistry for the modern web. We build lead machines and AI workflows that scale your business.">
+        content="Bespoke websites, mobile apps, SEO, and smart automation for growing businesses across India.">
     <meta property="og:image" content="https://techkarigar.com/assets/og-image.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://techkarigar.com/">
-    <meta property="twitter:title" content="Techkarigar | The Technical Artisans for High-Growth Brands">
+    <meta property="twitter:title" content="TechKarigar | Digital Solutions for Modern Businesses">
     <meta property="twitter:description"
-        content="Bespoke digital artistry for the modern web. We build lead machines and AI workflows that scale your business.">
+        content="Bespoke websites, mobile apps, SEO, and smart automation for growing businesses.">
     <meta property="twitter:image" content="https://techkarigar.com/assets/og-image.jpg">
 
-    <!-- Performance Optimization: Preconnect to CDNs -->
+    <!-- Preconnects -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.tailwindcss.com">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="preconnect" href="https://unpkg.com">
 
-    <!-- Preload Critical Fonts -->
-    <link rel="preload"
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@300..700&display=swap"
-        as="style">
-
+    <!-- Fonts: Space Grotesk + Inter -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@300..700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@300..700&display=swap"
         rel="stylesheet">
 
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -50,13 +44,15 @@
                 extend: {
                     fontFamily: {
                         sans: ['"Inter"', 'sans-serif'],
-                        display: ['"Inter"', 'sans-serif'],
-                        serif: ['"Cormorant Garamond"', 'serif'],
+                        display: ['"Space Grotesk"', 'sans-serif'],
                     },
                     colors: {
                         brand: {
-                            50: '#f0f1fa', 100: '#e4e6ef', 200: '#c1ff00', 300: '#07f78c', 400: '#1a2ffb',
-                            500: '#7437ff', 600: '#8832f7', 700: '#0016ec', 800: '#ff4c41', 900: '#000000',
+                            purple: '#7437ff',
+                            lime: '#c1ff00',
+                            cyan: '#00e5ff',
+                            pink: '#ff4c8b',
+                            dark: '#08080f',
                         }
                     }
                 }
@@ -64,592 +60,803 @@
         }
     </script>
 
-    <!-- Custom Styles & Scripts -->
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/locomotive-scroll@5.0.0-beta.13/dist/locomotive-scroll.min.css">
 
-    <!-- Deferred Libraries for Lightning Fast Loading -->
+    <!-- Deferred Libraries -->
     <script src="https://unpkg.com/split-type" defer></script>
     <script src="https://unpkg.com/lucide@latest" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@5.0.0-beta.13/dist/locomotive-scroll.min.js"
-        defer></script>
-
     <script src="js/main.js" defer></script>
-
 </head>
 
-<body class="font-sans antialiased text-gray-800 selection:bg-brand-500/30 selection:text-brand-400">
+<body class="font-sans antialiased">
 
-    <!-- Content will be injected here -->
+    <!-- Custom Cursor (desktop only) -->
+    <div class="custom-cursor" aria-hidden="true"></div>
 
-    <!-- Custom Cursor -->
-    <div class="custom-cursor"></div>
+    <!-- Fixed canvas background -->
+    <canvas id="neuron-canvas" aria-hidden="true"></canvas>
 
-    <!-- Neuron Network Canvas Background -->
+    <!-- Grid overlay -->
+    <div class="fixed inset-0 grid-pattern pointer-events-none" style="z-index:0;" aria-hidden="true"></div>
 
+    <!-- Ambient glow orbs -->
+    <div class="fixed top-0 left-1/4 w-[500px] h-[500px] rounded-full pointer-events-none orb-purple" aria-hidden="true"></div>
+    <div class="fixed bottom-0 right-1/4 w-[500px] h-[500px] rounded-full pointer-events-none orb-cyan" aria-hidden="true"></div>
 
-    <div id="app" class="relative overflow-clip" style="z-index: 1;">
-        <!-- Background Orbs -->
-        <div class="fixed inset-0 grid-pattern pointer-events-none opacity-50"></div>
-        <div
-            class="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] bg-brand-500/10 rounded-full blur-[120px] pointer-events-none animate-pulse">
-        </div>
-        <div
-            class="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-brand-600/10 rounded-full blur-[120px] pointer-events-none">
-        </div>
+    <div id="app" class="relative" style="z-index:1;">
 
-        <!-- Header -->
-        <header class="fixed top-0 w-full z-50 py-4 px-4 md:px-10 transition-all duration-100" id="navbar">
+        <!-- ===== NAVBAR ===== -->
+        <header id="navbar" class="fixed top-0 w-full z-50 px-4 md:px-10 py-4">
             <nav class="max-w-7xl mx-auto flex items-center justify-between">
                 <a href="#" class="flex items-center space-x-2 group">
-                    <div
-                        class="w-14 h-14 glass rounded-xl flex items-center justify-center p-2 group-hover:bg-brand-500/20 transition-all duration-100">
-                        <img src="assets/images/t-logo-alpha.png" alt="Techkarigar Logo"
+                    <div class="nav-logo-wrap w-10 h-10 rounded-xl flex items-center justify-center p-1.5">
+                        <img src="assets/images/t-logo-alpha.png" alt="TechKarigar Logo"
                             class="w-full h-full object-contain">
                     </div>
-                    <span class="font-display text-2xl font-bold tracking-tight text-gray-900 italic">Tech<span
-                            class="text-brand-400">karigar</span></span>
+                    <span class="font-display text-xl font-bold tracking-tight text-white">Tech<span
+                            class="text-brand-lime">karigar</span></span>
                 </a>
 
-                <div class="hidden md:flex items-center space-x-10">
+                <div class="hidden md:flex items-center space-x-8">
                     <a href="#services"
-                        class="text-sm font-medium text-gray-700 hover:text-brand-400 transition-colors">Services</a>
+                        class="text-sm font-medium text-gray-400 hover:text-white transition-colors duration-200">Services</a>
                     <a href="#work"
-                        class="text-sm font-medium text-gray-700 hover:text-brand-400 transition-colors">Work</a>
+                        class="text-sm font-medium text-gray-400 hover:text-white transition-colors duration-200">Work</a>
                     <a href="#about"
-                        class="text-sm font-medium text-gray-700 hover:text-brand-400 transition-colors">About</a>
+                        class="text-sm font-medium text-gray-400 hover:text-white transition-colors duration-200">About</a>
                     <a href="mailto:info@techkarigar.com"
-                        class="px-5 py-2.5 glass rounded-full text-sm font-semibold hover:border-brand-500/50 hover:bg-brand-500/5 transition-all duration-100">Start
-                        a Project</a>
+                        class="btn-outline px-5 py-2.5 rounded-full text-sm font-semibold text-white">Start a
+                        Project</a>
                 </div>
 
                 <button id="mobile-menu-btn"
-                    class="md:hidden relative w-12 h-12 bg-white border border-gray-200 hover:bg-gray-50 shadow-sm rounded-lg flex items-center justify-center text-gray-800 transition-colors">
-                    <span class="absolute -inset-6 cursor-pointer" aria-hidden="true"></span>
-                    <i data-lucide="menu" class="w-6 h-6"></i>
+                    class="md:hidden glass-dark w-10 h-10 rounded-lg flex items-center justify-center text-white"
+                    aria-label="Open menu">
+                    <i data-lucide="menu" class="w-5 h-5"></i>
                 </button>
             </nav>
         </header>
 
         <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu" class="fixed inset-0 z-[60] hidden">
-            <div class="absolute inset-0 bg-white/95 backdrop-blur-xl"></div>
-            <div class="relative h-full flex flex-col p-6 md:p-10">
-                <div class="flex items-center justify-between mb-12">
+        <div id="mobile-menu" class="fixed inset-0 z-[60] hidden" role="dialog" aria-modal="true">
+            <div class="absolute inset-0 bg-[#08080f]/97 backdrop-blur-2xl"></div>
+            <div class="relative h-full flex flex-col p-6">
+                <div class="flex items-center justify-between mb-16">
                     <a href="#" class="flex items-center space-x-2">
-                        <div class="w-14 h-14 glass rounded-xl flex items-center justify-center p-2">
-                            <img src="assets/images/t-logo-alpha.png" alt="Techkarigar Logo"
+                        <div class="nav-logo-wrap w-10 h-10 rounded-xl flex items-center justify-center p-1.5">
+                            <img src="assets/images/t-logo-alpha.png" alt="TechKarigar Logo"
                                 class="w-full h-full object-contain">
                         </div>
-                        <span class="font-display text-2xl font-bold tracking-tight text-gray-900 italic">Tech<span
-                                class="text-brand-400">karigar</span></span>
+                        <span class="font-display text-xl font-bold text-white">Tech<span
+                                class="text-brand-lime">karigar</span></span>
                     </a>
                     <button id="mobile-menu-close"
-                        class="relative w-12 h-12 bg-gray-100 hover:bg-gray-200 rounded-lg flex items-center justify-center text-gray-800 transition-colors">
-                        <span class="absolute -inset-6 cursor-pointer" aria-hidden="true"></span>
-                        <i data-lucide="x" class="w-6 h-6"></i>
+                        class="glass-dark w-10 h-10 rounded-lg flex items-center justify-center text-white"
+                        aria-label="Close menu">
+                        <i data-lucide="x" class="w-5 h-5"></i>
                     </button>
                 </div>
 
-                <div class="flex flex-col space-y-8">
+                <nav class="flex flex-col space-y-6">
                     <a href="#services"
-                        class="mobile-link font-display text-4xl font-bold text-gray-900 italic">Services</a>
-                    <a href="#work" class="mobile-link font-display text-4xl font-bold text-gray-900 italic">Work</a>
-                    <a href="#about" class="mobile-link font-display text-4xl font-bold text-gray-900 italic">About</a>
+                        class="mobile-link font-display text-5xl font-bold text-white">Services</a>
+                    <a href="#work" class="mobile-link font-display text-5xl font-bold text-white">Work</a>
+                    <a href="#about" class="mobile-link font-display text-5xl font-bold text-white">About</a>
                     <a href="mailto:info@techkarigar.com"
-                        class="px-8 py-4 bg-gradient-to-r from-brand-400 to-brand-500 text-white rounded-full font-semibold inline-block text-center mt-4">Start
+                        class="inline-block px-8 py-4 btn-primary rounded-full font-semibold text-white text-center mt-4 max-w-xs">Start
                         a Project</a>
-                </div>
+                </nav>
 
-                <div class="mt-auto pt-10 border-t border-gray-100 italic">
-                    <p class="text-sm text-gray-500">Bespoke digital artistry for the modern web.</p>
+                <div class="mt-auto pt-8 border-t border-white/5">
+                    <p class="text-sm text-gray-600">Crafting digital futures for real businesses.</p>
                 </div>
             </div>
         </div>
 
-        <!-- Hero Section -->
-        <section
-            class="min-h-screen flex items-center justify-center px-4 md:px-10 pt-14 pb-8 md:pt-32 md:pb-20 relative overflow-hidden">
-            <!-- Neuron Network Canvas Background -->
-            <canvas id="neuron-canvas"
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;"></canvas>
+        <!-- ===== HERO ===== -->
+        <section id="hero"
+            class="min-h-screen flex items-center justify-center px-4 md:px-10 pt-24 pb-16 relative overflow-hidden">
+            <div class="max-w-5xl mx-auto text-center relative z-10">
 
-            <div class="max-w-6xl mx-auto text-center relative z-10">
+                <!-- Badge -->
                 <div
-                    class="hero-badge inline-flex items-center space-x-2 glass px-6 py-3 rounded-full mt-10 mb-8 opacity-0 scale-90">
-                    <div class="w-2 h-2 bg-brand-300 rounded-full animate-pulse"></div>
-                    <span class="text-sm font-medium text-gray-700">Available for Select Projects</span>
+                    class="hero-badge inline-flex items-center space-x-2 glass-dark px-4 py-2 rounded-full mb-8 opacity-0">
+                    <span class="w-2 h-2 bg-brand-lime rounded-full animate-pulse"></span>
+                    <span class="text-sm font-medium text-gray-300">Available for Select Projects</span>
                 </div>
-                <h1 class="hero-title font-display text-4xl md:text-8xl lg:text-9xl font-bold mb-8 leading-none">
-                    <span class="text-gray-900 italic">Crafting</span><br>
-                    <span class="text-gradient">Digital</span>
-                    <span class="text-gray-900 italic">Masterpieces</span>
+
+                <!-- Headline -->
+                <h1
+                    class="hero-title font-display text-5xl md:text-8xl lg:text-9xl font-bold mb-6 leading-[0.9] tracking-tight">
+                    <span class="text-white block">We Build</span>
+                    <span class="text-gradient block">Digital Futures</span>
+                    <span class="text-white block">For Real Businesses</span>
                 </h1>
-                <p
-                    class="hero-desc text-gray-700 text-xl md:text-2xl max-w-3xl mx-auto mb-12 leading-relaxed font-light opacity-0 translate-y-10">
-                    We help businesses <span class="font-semibold text-brand-400">go online and grow digitally</span>
-                    with premium website design, mobile apps, and intelligent automation solutions.
+
+                <!-- Typewriter -->
+                <p class="hero-desc text-gray-400 text-xl md:text-2xl mb-12 font-light h-8 opacity-0">
+                    <span id="typewriter-text"></span><span class="typewriter-cursor" aria-hidden="true"></span>
                 </p>
+
+                <!-- CTAs -->
                 <div
-                    class="hero-btns flex flex-col sm:flex-row items-center justify-center gap-6 opacity-0 translate-y-10">
+                    class="hero-btns flex flex-col sm:flex-row items-center justify-center gap-4 mb-20 opacity-0">
                     <a href="#work"
-                        class="group px-8 py-4 bg-gradient-to-r from-brand-400 to-brand-500 text-white rounded-full font-semibold hover:shadow-2xl hover:shadow-brand-400/50 transition-all duration-100 hover:scale-105">
-                        <span class="flex items-center space-x-2">
-                            <span>View Our Work</span>
-                            <i data-lucide="arrow-right"
-                                class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
-                        </span>
+                        class="group btn-primary px-8 py-4 rounded-full font-semibold text-white flex items-center space-x-2 w-full sm:w-auto justify-center">
+                        <span>View Our Work</span>
+                        <i data-lucide="arrow-right"
+                            class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200"></i>
                     </a>
-                    <a href="#services"
-                        class="px-8 py-4 glass rounded-full font-semibold text-gray-900 hover:border-brand-400 hover:bg-brand-400/10 transition-all duration-100">Explore
-                        Services</a>
+                    <a href="mailto:info@techkarigar.com"
+                        class="btn-outline glass-dark px-8 py-4 rounded-full font-semibold text-white w-full sm:w-auto text-center">Start
+                        a Project</a>
                 </div>
-                <div class="hero-visual mt-20 relative">
-                    <div
-                        class="w-full h-64 glass rounded-3xl flex items-center justify-center relative overflow-hidden">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-br from-brand-400/20 via-brand-500/10 to-brand-600/20">
-                        </div>
-                        <div class="relative z-10 text-center">
-                            <i data-lucide="sparkles" class="w-20 h-20 text-brand-400 mx-auto mb-4"></i>
-                            <p class="text-gray-700 font-medium">Award-Winning Design Standards</p>
-                        </div>
+
+                <!-- Stats -->
+                <div class="hero-stats grid grid-cols-3 gap-4 max-w-lg mx-auto opacity-0">
+                    <div class="text-center">
+                        <div class="font-display text-3xl md:text-4xl font-bold text-white">100+</div>
+                        <div class="text-xs text-gray-500 mt-1 leading-tight">Businesses<br>Scaled</div>
                     </div>
+                    <div class="text-center border-x border-white/10">
+                        <div class="font-display text-3xl md:text-4xl font-bold text-white">70%</div>
+                        <div class="text-xs text-gray-500 mt-1 leading-tight">Time<br>Saved</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="font-display text-3xl md:text-4xl font-bold text-white">10x</div>
+                        <div class="text-xs text-gray-500 mt-1 leading-tight">Growth<br>Multiplier</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll indicator -->
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator" aria-hidden="true">
+                <div class="w-6 h-9 rounded-full border border-white/20 flex items-start justify-center p-1">
+                    <div class="w-1 h-2 bg-brand-lime rounded-full scroll-dot"></div>
                 </div>
             </div>
         </section>
 
-        <!-- Services Section -->
-        <section id="services" class="py-16 md:py-32 px-4 md:px-10 relative overflow-hidden">
+        <!-- ===== SERVICES ===== -->
+        <section id="services" class="py-24 md:py-32 px-4 md:px-10 relative">
             <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-16 md:mb-24">
-                    <h2 class="font-display text-4xl md:text-7xl font-bold mb-6 text-gray-900 italic tracking-tight">
-                        What <span class="text-brand-400">we do</span>
+
+                <div class="text-center mb-16 reveal">
+                    <p class="text-brand-lime text-xs font-semibold tracking-[0.2em] uppercase mb-4">What We Do</p>
+                    <h2 class="font-display text-4xl md:text-6xl font-bold text-white mb-6">
+                        Crafted <span class="text-gradient">Solutions</span>
                     </h2>
-                    <p class="text-gray-700 max-w-3xl mx-auto text-xl font-light leading-relaxed">
-                        We help businesses go online and grow digitally through artisanal code and intelligent
-                        automation.
+                    <p class="text-gray-400 max-w-2xl mx-auto text-lg font-light leading-relaxed">
+                        From pixel-perfect websites to intelligent automation — we build tech that works for your
+                        business.
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Website Development -->
-                    <div
-                        class="service-card group p-8 glass rounded-[40px] hover:bg-white/[0.05] transition-all duration-150 border-white/5 relative overflow-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+                    <!-- Web Dev -->
+                    <div class="service-card glass-dark rounded-3xl p-8 reveal reveal-delay-1">
                         <div
-                            class="w-16 h-16 glass rounded-2xl flex items-center justify-center mb-8 group-hover:bg-brand-500/20 transition-all duration-100">
-                            <i data-lucide="layout" class="w-8 h-8 text-brand-400"></i>
+                            class="service-icon w-14 h-14 rounded-2xl flex items-center justify-center mb-6 icon-bg-purple">
+                            <i data-lucide="layout-dashboard" class="w-7 h-7 text-brand-purple"></i>
                         </div>
-                        <h3
-                            class="font-display text-2xl font-bold text-gray-900 mb-4 group-hover:text-brand-400 transition-colors italic">
-                            Website Design & Development</h3>
-                        <p class="text-gray-700 leading-relaxed font-light italic">
-                            High-performance, astoundingly beautiful websites designed to take your business online and
-                            convert visitors into loyal customers.
+                        <h3 class="font-display text-xl font-bold text-white mb-3">Website Design &
+                            Development</h3>
+                        <p class="text-gray-400 leading-relaxed text-sm">
+                            High-performance, conversion-focused websites that establish your brand online and turn
+                            visitors into loyal customers.
                         </p>
+                        <div class="mt-6 pt-6 border-t border-white/5">
+                            <a href="mailto:info@techkarigar.com?subject=Inquiry: Website Development"
+                                class="service-link text-brand-purple text-sm font-medium flex items-center space-x-1 hover:text-brand-lime transition-colors duration-200">
+                                <span>Get Started</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
                     </div>
 
-                    <!-- Mobile App Development -->
-                    <div
-                        class="service-card group p-8 glass rounded-[40px] hover:bg-white/[0.05] transition-all duration-150 border-white/5 relative overflow-hidden">
+                    <!-- Mobile App -->
+                    <div class="service-card glass-dark rounded-3xl p-8 reveal reveal-delay-2">
                         <div
-                            class="w-16 h-16 glass rounded-2xl flex items-center justify-center mb-8 group-hover:bg-brand-500/20 transition-all duration-100">
-                            <i data-lucide="smartphone" class="w-8 h-8 text-brand-400"></i>
+                            class="service-icon w-14 h-14 rounded-2xl flex items-center justify-center mb-6 icon-bg-cyan">
+                            <i data-lucide="smartphone" class="w-7 h-7 text-brand-cyan"></i>
                         </div>
-                        <h3
-                            class="font-display text-2xl font-bold text-gray-900 mb-4 group-hover:text-brand-400 transition-colors italic">
-                            Mobile App Development</h3>
-                        <p class="text-gray-700 leading-relaxed font-light italic">
-                            Bespoke mobile applications for Android, iOS, and hybrid platforms that deliver seamless
-                            user experiences.
+                        <h3 class="font-display text-xl font-bold text-white mb-3">Mobile App Development</h3>
+                        <p class="text-gray-400 leading-relaxed text-sm">
+                            Bespoke Android, iOS, and hybrid apps that deliver seamless experiences and keep your
+                            customers coming back.
                         </p>
-                    </div>
-
-                    <!-- Digital Solutions -->
-                    <div
-                        class="service-card group p-8 glass rounded-[40px] hover:bg-white/[0.05] transition-all duration-150 border-white/5 relative overflow-hidden">
-                        <div
-                            class="w-16 h-16 glass rounded-2xl flex items-center justify-center mb-8 group-hover:bg-brand-500/20 transition-all duration-100">
-                            <i data-lucide="globe" class="w-8 h-8 text-brand-400"></i>
+                        <div class="mt-6 pt-6 border-t border-white/5">
+                            <a href="mailto:info@techkarigar.com?subject=Inquiry: Mobile App Development"
+                                class="service-link text-brand-cyan text-sm font-medium flex items-center space-x-1 hover:text-brand-lime transition-colors duration-200">
+                                <span>Get Started</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </a>
                         </div>
-                        <h3
-                            class="font-display text-2xl font-bold text-gray-900 mb-4 group-hover:text-brand-400 transition-colors italic">
-                            Digital Solutions</h3>
-                        <p class="text-gray-700 leading-relaxed font-light italic">
-                            Comprehensive digital solutions to strengthen your online presence and solve complex
-                            business challenges.
-                        </p>
                     </div>
 
                     <!-- SEO -->
-                    <div
-                        class="service-card group p-8 glass rounded-[40px] hover:bg-white/[0.05] transition-all duration-150 border-white/5 relative overflow-hidden">
+                    <div class="service-card glass-dark rounded-3xl p-8 reveal reveal-delay-3">
                         <div
-                            class="w-16 h-16 glass rounded-2xl flex items-center justify-center mb-8 group-hover:bg-brand-500/20 transition-all duration-100">
-                            <i data-lucide="search" class="w-8 h-8 text-brand-400"></i>
+                            class="service-icon w-14 h-14 rounded-2xl flex items-center justify-center mb-6 icon-bg-lime">
+                            <i data-lucide="search" class="w-7 h-7 text-brand-lime"></i>
                         </div>
-                        <h3
-                            class="font-display text-2xl font-bold text-gray-900 mb-4 group-hover:text-brand-400 transition-colors italic">
-                            SEO Optimization</h3>
-                        <p class="text-gray-700 leading-relaxed font-light italic">
-                            Advanced search engine optimization to improve your website ranking and visibility, driving
-                            organic growth.
+                        <h3 class="font-display text-xl font-bold text-white mb-3">SEO Optimization</h3>
+                        <p class="text-gray-400 leading-relaxed text-sm">
+                            Rank higher on Google and drive consistent organic traffic with advanced SEO strategies
+                            built specifically for your niche.
                         </p>
+                        <div class="mt-6 pt-6 border-t border-white/5">
+                            <a href="mailto:info@techkarigar.com?subject=Inquiry: SEO"
+                                class="service-link text-brand-lime text-sm font-medium flex items-center space-x-1 hover:text-brand-purple transition-colors duration-200">
+                                <span>Get Started</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
                     </div>
 
                     <!-- Digital Marketing -->
-                    <div
-                        class="service-card group p-8 glass rounded-[40px] hover:bg-white/[0.05] transition-all duration-150 border-white/5 relative overflow-hidden">
+                    <div class="service-card glass-dark rounded-3xl p-8 reveal reveal-delay-1">
                         <div
-                            class="w-16 h-16 glass rounded-2xl flex items-center justify-center mb-8 group-hover:bg-brand-500/20 transition-all duration-100">
-                            <i data-lucide="megaphone" class="w-8 h-8 text-brand-400"></i>
+                            class="service-icon w-14 h-14 rounded-2xl flex items-center justify-center mb-6 icon-bg-pink">
+                            <i data-lucide="megaphone" class="w-7 h-7 text-pink-400"></i>
                         </div>
-                        <h3
-                            class="font-display text-2xl font-bold text-gray-900 mb-4 group-hover:text-brand-400 transition-colors italic">
-                            Digital Marketing</h3>
-                        <p class="text-gray-700 leading-relaxed font-light italic">
-                            Strategic digital marketing campaigns to amplify your business reach and engage with your
-                            target audience.
+                        <h3 class="font-display text-xl font-bold text-white mb-3">Digital Marketing</h3>
+                        <p class="text-gray-400 leading-relaxed text-sm">
+                            Strategic campaigns across social media and digital channels to amplify your reach and
+                            engage the right audience.
                         </p>
+                        <div class="mt-6 pt-6 border-t border-white/5">
+                            <a href="mailto:info@techkarigar.com?subject=Inquiry: Digital Marketing"
+                                class="service-link text-pink-400 text-sm font-medium flex items-center space-x-1 hover:text-brand-lime transition-colors duration-200">
+                                <span>Get Started</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
                     </div>
 
-                    <!-- Automation Solutions -->
-                    <div
-                        class="service-card group p-8 glass rounded-[40px] hover:bg-white/[0.05] transition-all duration-150 border-white/5 relative overflow-hidden">
+                    <!-- Office Automation -->
+                    <div class="service-card glass-dark rounded-3xl p-8 reveal reveal-delay-2">
                         <div
-                            class="w-16 h-16 glass rounded-2xl flex items-center justify-center mb-8 group-hover:bg-brand-500/20 transition-all duration-100">
-                            <i data-lucide="cpu" class="w-8 h-8 text-brand-400"></i>
+                            class="service-icon w-14 h-14 rounded-2xl flex items-center justify-center mb-6 icon-bg-orange">
+                            <i data-lucide="zap" class="w-7 h-7 text-orange-400"></i>
                         </div>
-                        <h3
-                            class="font-display text-2xl font-bold text-gray-900 mb-4 group-hover:text-brand-400 transition-colors italic">
-                            Automation Solutions</h3>
-                        <p class="text-gray-700 leading-relaxed font-light italic">
-                            Custom automation solutions to reduce manual work and increase operational efficiency across
-                            your business.
+                        <h3 class="font-display text-xl font-bold text-white mb-3">Office Work Automation</h3>
+                        <p class="text-gray-400 leading-relaxed text-sm">
+                            Smart scripts that eliminate repetitive tasks — data entry, report generation, spreadsheet
+                            workflows — saving you hours every single day.
                         </p>
+                        <div class="mt-6 pt-6 border-t border-white/5">
+                            <a href="mailto:info@techkarigar.com?subject=Inquiry: Office Automation"
+                                class="service-link text-orange-400 text-sm font-medium flex items-center space-x-1 hover:text-brand-lime transition-colors duration-200">
+                                <span>Save Time Now</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
                     </div>
 
-                    <!-- Office Work Automation -->
-                    <div
-                        class="service-card group p-8 glass rounded-[40px] md:col-span-2 lg:col-span-3 hover:bg-white/[0.05] transition-all duration-150 border-white/5 border-t-brand-500/20 relative overflow-hidden">
-                        <div class="flex flex-col md:flex-row items-start md:items-center gap-8">
-                            <div
-                                class="w-16 h-16 glass rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-brand-500/20 transition-all duration-100">
-                                <i data-lucide="zap" class="w-8 h-8 text-brand-400"></i>
-                            </div>
-                            <div>
-                                <h3
-                                    class="font-display text-2xl font-bold text-gray-900 mb-2 group-hover:text-brand-400 transition-colors italic">
-                                    Office Work Automation</h3>
-                                <p class="text-gray-700 leading-relaxed font-light italic max-w-4xl">
-                                    We save time and effort using scripts and smart tools to automate repetitive office
-                                    tasks, from spreadsheet processing to data entry workflows.
-                                </p>
-                            </div>
-                            <div class="mt-auto md:mt-0 md:ml-auto">
-                                <a href="mailto:info@techkarigar.com"
-                                    class="px-6 py-3 bg-brand-400 text-white rounded-full text-sm font-semibold hover:bg-brand-500 transition-all duration-100 inline-block">Save
-                                    Time Now</a>
-                            </div>
+                    <!-- AI Automation -->
+                    <div class="service-card glass-dark rounded-3xl p-8 reveal reveal-delay-3">
+                        <div
+                            class="service-icon w-14 h-14 rounded-2xl flex items-center justify-center mb-6 icon-bg-purple">
+                            <i data-lucide="cpu" class="w-7 h-7 text-brand-purple"></i>
+                        </div>
+                        <h3 class="font-display text-xl font-bold text-white mb-3">AI &amp; Smart Automation</h3>
+                        <p class="text-gray-400 leading-relaxed text-sm">
+                            Integrate cutting-edge AI tools into your daily operations. Future-proof your business and
+                            gain a serious, lasting competitive edge.
+                        </p>
+                        <div class="mt-6 pt-6 border-t border-white/5">
+                            <a href="mailto:info@techkarigar.com?subject=Inquiry: AI Automation"
+                                class="service-link text-brand-purple text-sm font-medium flex items-center space-x-1 hover:text-brand-lime transition-colors duration-200">
+                                <span>Get Started</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </a>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
-        <!-- Impact / Work Section -->
-        <section id="work" class="py-16 md:py-32 px-4 md:px-10 relative overflow-hidden">
+
+        <!-- ===== IMPACT / WORK ===== -->
+        <section id="work" class="py-24 md:py-32 px-4 md:px-10 relative">
             <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-16 md:mb-24">
-                    <h2 class="font-display text-3xl md:text-7xl font-bold mb-6 text-gray-900 italic tracking-tight">
-                        Our <span class="text-brand-400">Impact</span>
+
+                <div class="text-center mb-16 reveal">
+                    <p class="text-brand-cyan text-xs font-semibold tracking-[0.2em] uppercase mb-4">Our Impact</p>
+                    <h2 class="font-display text-4xl md:text-6xl font-bold text-white mb-6">
+                        Results That <span class="text-gradient">Speak</span>
                     </h2>
-                    <p class="text-gray-700 max-w-2xl mx-auto text-lg font-light leading-relaxed">
-                        We don't just build software. We engineer operational advantages that drive measurable results.
+                    <p class="text-gray-400 max-w-2xl mx-auto text-lg font-light leading-relaxed">
+                        We don't just build software — we engineer measurable advantages for your business.
                     </p>
                 </div>
 
-                <div class="flex flex-col space-y-16 md:space-y-32">
-                    <!-- Value Prop 1: Digital Presence -->
-                    <div class="flex flex-col md:flex-row items-center gap-12 group">
+                <!-- Animated stat cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-24">
+                    <div class="stat-card glass-dark rounded-3xl p-10 text-center reveal reveal-delay-1">
+                        <div class="font-display text-5xl md:text-6xl font-bold text-white mb-2">
+                            <span class="counter" data-target="100" data-suffix="+">0+</span>
+                        </div>
+                        <div class="text-brand-purple font-semibold mb-3">Businesses Scaled</div>
+                        <p class="text-gray-500 text-sm leading-relaxed">Local businesses helped establish their digital
+                            presence from the ground up.</p>
+                    </div>
+                    <div class="stat-card glass-dark rounded-3xl p-10 text-center reveal reveal-delay-2">
+                        <div class="font-display text-5xl md:text-6xl font-bold text-white mb-2">
+                            <span class="counter" data-target="70" data-suffix="%">0%</span>
+                        </div>
+                        <div class="text-brand-lime font-semibold mb-3">Manual Hours Saved</div>
+                        <p class="text-gray-500 text-sm leading-relaxed">Average reduction in repetitive manual work
+                            through custom automation scripts.</p>
+                    </div>
+                    <div class="stat-card glass-dark rounded-3xl p-10 text-center reveal reveal-delay-3">
+                        <div class="font-display text-5xl md:text-6xl font-bold text-white mb-2">
+                            <span class="counter" data-target="10" data-suffix="x">0x</span>
+                        </div>
+                        <div class="text-brand-cyan font-semibold mb-3">Growth Multiplier</div>
+                        <p class="text-gray-500 text-sm leading-relaxed">Average business growth via AI-driven systems
+                            and a strong digital presence.</p>
+                    </div>
+                </div>
+
+                <!-- Value Props -->
+                <div class="space-y-20 md:space-y-32">
+
+                    <!-- VP1: Digital Presence -->
+                    <div class="flex flex-col md:flex-row items-center gap-12 reveal">
                         <div class="w-full md:w-1/2 order-2 md:order-1">
-                            <h3 class="font-display text-2xl md:text-5xl font-bold text-gray-900 mb-6 italic">
-                                Digital Presence for Local Businesses
+                            <p
+                                class="text-brand-purple text-xs font-semibold tracking-[0.2em] uppercase mb-4">Digital
+                                Presence</p>
+                            <h3 class="font-display text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
+                                Take Your Business Online,<br>the Right Way
                             </h3>
-                            <p class="text-gray-700 text-lg leading-relaxed mb-6 font-light">
-                                We have helped 100+ local businesses by creating their digital presence from the ground
-                                up, enabling them to attract quality digital traffic, substantially boost their income,
-                                and scale their operations predictably.
+                            <p class="text-gray-400 text-lg leading-relaxed mb-6 font-light">
+                                We've helped 100+ local businesses build their digital presence from scratch —
+                                enabling them to attract quality leads, boost income, and scale predictably.
                             </p>
-                            <ul class="space-y-4 mb-8 text-lg">
-                                <li class="flex items-center space-x-4 text-gray-700">
-                                    <div
-                                        class="w-10 h-10 rounded-full bg-brand-500/10 flex items-center justify-center flex-shrink-0">
-                                        <i data-lucide="trending-up" class="w-5 h-5 text-brand-500"></i>
-                                    </div>
-                                    <span class="font-medium">Scale business operations organically</span>
+                            <ul class="space-y-3">
+                                <li class="flex items-center space-x-3 text-gray-300">
+                                    <i data-lucide="check-circle" class="w-5 h-5 text-brand-lime flex-shrink-0"></i>
+                                    <span>Scale operations organically</span>
                                 </li>
-                                <li class="flex items-center space-x-4 text-gray-700">
-                                    <div
-                                        class="w-10 h-10 rounded-full bg-brand-500/10 flex items-center justify-center flex-shrink-0">
-                                        <i data-lucide="users" class="w-5 h-5 text-brand-500"></i>
-                                    </div>
-                                    <span class="font-medium">Attract consistent high-intent traffic</span>
+                                <li class="flex items-center space-x-3 text-gray-300">
+                                    <i data-lucide="check-circle" class="w-5 h-5 text-brand-lime flex-shrink-0"></i>
+                                    <span>Attract consistent high-intent traffic</span>
+                                </li>
+                                <li class="flex items-center space-x-3 text-gray-300">
+                                    <i data-lucide="check-circle" class="w-5 h-5 text-brand-lime flex-shrink-0"></i>
+                                    <span>Convert visitors into paying customers</span>
                                 </li>
                             </ul>
                         </div>
                         <div class="w-full md:w-1/2 order-1 md:order-2">
-                            <div
-                                class="glass p-10 md:p-16 rounded-[40px] relative overflow-hidden border-white/5 border-t-brand-400/30 group-hover:bg-white/[0.05] transition-all duration-150">
+                            <div class="impact-card glass-dark rounded-3xl p-12 text-center">
                                 <div
-                                    class="absolute -right-20 -top-20 w-64 h-64 bg-brand-400/20 rounded-full blur-3xl group-hover:bg-brand-400/30 transition-all duration-150">
+                                    class="w-20 h-20 rounded-full icon-bg-purple flex items-center justify-center mx-auto mb-6">
+                                    <i data-lucide="globe" class="w-10 h-10 text-brand-purple"></i>
                                 </div>
-                                <i data-lucide="globe"
-                                    class="w-24 h-24 text-brand-400 mb-8 relative z-10 transition-transform duration-150 group-hover:scale-110"></i>
-                                <div
-                                    class="relative z-10 text-4xl md:text-7xl font-display font-bold text-gray-900 group-hover:text-brand-400 transition-colors">
-                                    100+</div>
-                                <div class="relative z-10 text-xl md:text-2xl text-gray-600 font-light mt-4">Local
-                                    businesses scaled</div>
+                                <div class="font-display text-6xl font-bold text-white mb-3">100+</div>
+                                <div class="text-gray-400">Local businesses scaled</div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Value Prop 2: Automation -->
-                    <div class="flex flex-col md:flex-row items-center gap-12 group">
+                    <!-- VP2: Automation -->
+                    <div class="flex flex-col md:flex-row items-center gap-12 reveal">
                         <div class="w-full md:w-1/2 hidden md:block">
-                            <div
-                                class="glass p-10 md:p-16 rounded-[40px] relative overflow-hidden border-white/5 border-t-brand-500/30 group-hover:bg-white/[0.05] transition-all duration-150">
+                            <div class="impact-card glass-dark rounded-3xl p-12 text-center">
                                 <div
-                                    class="absolute -left-20 -bottom-20 w-64 h-64 bg-brand-500/20 rounded-full blur-3xl group-hover:bg-brand-500/30 transition-all duration-150">
+                                    class="w-20 h-20 rounded-full icon-bg-lime flex items-center justify-center mx-auto mb-6">
+                                    <i data-lucide="cpu" class="w-10 h-10 text-brand-lime"></i>
                                 </div>
-                                <i data-lucide="cpu"
-                                    class="w-24 h-24 text-brand-500 mb-8 relative z-10 transition-transform duration-150 group-hover:scale-110"></i>
-                                <div
-                                    class="relative z-10 text-4xl md:text-7xl font-display font-bold text-gray-900 group-hover:text-brand-500 transition-colors">
-                                    70%</div>
-                                <div class="relative z-10 text-xl md:text-2xl text-gray-600 font-light mt-4">Reduction
-                                    in manual working hours</div>
+                                <div class="font-display text-6xl font-bold text-white mb-3">70%</div>
+                                <div class="text-gray-400">Reduction in manual hours</div>
                             </div>
                         </div>
                         <div class="w-full md:w-1/2">
-                            <h3 class="font-display text-2xl md:text-5xl font-bold text-gray-900 mb-6 italic">
-                                Automation to Reduce Manual Work
+                            <p
+                                class="text-brand-lime text-xs font-semibold tracking-[0.2em] uppercase mb-4">Automation</p>
+                            <h3 class="font-display text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
+                                Stop Doing Repetitive Work.<br>Let Scripts Do It.
                             </h3>
-                            <p class="text-gray-700 text-lg leading-relaxed mb-6 font-light">
-                                By closely analyzing how companies operate, we've identified key bottlenecks in manual
-                                and repetitive processes. We build bespoke automation scripts that significantly slash
-                                working hours and remove human error entirely.
+                            <p class="text-gray-400 text-lg leading-relaxed mb-6 font-light">
+                                We analyze how companies operate, find the bottlenecks, and build bespoke scripts that
+                                save dozens of hours a week — with zero human error.
                             </p>
-                            <ul class="space-y-4 mb-8 text-lg">
-                                <li class="flex items-center space-x-4 text-gray-700">
-                                    <div
-                                        class="w-10 h-10 rounded-full bg-brand-500/10 flex items-center justify-center flex-shrink-0">
-                                        <i data-lucide="zap" class="w-5 h-5 text-brand-500"></i>
-                                    </div>
-                                    <span class="font-medium">Eliminate repetitive operational tasks</span>
+                            <ul class="space-y-3">
+                                <li class="flex items-center space-x-3 text-gray-300">
+                                    <i data-lucide="check-circle" class="w-5 h-5 text-brand-lime flex-shrink-0"></i>
+                                    <span>Eliminate repetitive operational tasks</span>
                                 </li>
-                                <li class="flex items-center space-x-4 text-gray-700">
-                                    <div
-                                        class="w-10 h-10 rounded-full bg-brand-500/10 flex items-center justify-center flex-shrink-0">
-                                        <i data-lucide="clock" class="w-5 h-5 text-brand-500"></i>
-                                    </div>
-                                    <span class="font-medium">Reclaim thousands of working hours globally</span>
+                                <li class="flex items-center space-x-3 text-gray-300">
+                                    <i data-lucide="check-circle" class="w-5 h-5 text-brand-lime flex-shrink-0"></i>
+                                    <span>Zero human error in critical workflows</span>
+                                </li>
+                                <li class="flex items-center space-x-3 text-gray-300">
+                                    <i data-lucide="check-circle" class="w-5 h-5 text-brand-lime flex-shrink-0"></i>
+                                    <span>Reclaim thousands of working hours</span>
                                 </li>
                             </ul>
                         </div>
-                        <div class="w-full md:w-1/2 block md:hidden">
-                            <div
-                                class="glass p-10 md:p-16 rounded-[40px] relative overflow-hidden border-white/5 border-t-brand-500/30 group-hover:bg-white/[0.05] transition-all duration-150">
+                        <!-- Mobile duplicate -->
+                        <div class="w-full md:hidden">
+                            <div class="impact-card glass-dark rounded-3xl p-12 text-center">
                                 <div
-                                    class="absolute -left-20 -bottom-20 w-64 h-64 bg-brand-500/20 rounded-full blur-3xl group-hover:bg-brand-500/30 transition-all duration-150">
+                                    class="w-20 h-20 rounded-full icon-bg-lime flex items-center justify-center mx-auto mb-6">
+                                    <i data-lucide="cpu" class="w-10 h-10 text-brand-lime"></i>
                                 </div>
-                                <i data-lucide="cpu"
-                                    class="w-24 h-24 text-brand-500 mb-8 relative z-10 transition-transform duration-150 group-hover:scale-110"></i>
-                                <div
-                                    class="relative z-10 text-4xl md:text-7xl font-display font-bold text-gray-900 group-hover:text-brand-500 transition-colors">
-                                    70%</div>
-                                <div class="relative z-10 text-xl md:text-2xl text-gray-600 font-light mt-4">Reduction
-                                    in manual working hours</div>
+                                <div class="font-display text-6xl font-bold text-white mb-3">70%</div>
+                                <div class="text-gray-400">Reduction in manual hours</div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Value Prop 3: AI Integration -->
-                    <div class="flex flex-col md:flex-row items-center gap-12 group">
-                        <div class="w-full md:w-1/2 order-2 md:order-1">
-                            <h3 class="font-display text-2xl md:text-5xl font-bold text-gray-900 mb-6 italic">
-                                AI Integration for Business Growth
-                            </h3>
-                            <p class="text-gray-700 text-lg leading-relaxed mb-6 font-light">
-                                The global landscape is shifting. We help traditional businesses integrate cutting-edge
-                                AI tools directly into their daily workflows, ensuring they keep up with AI-driven
-                                changes and future-proof their operations for years to come.
-                            </p>
-                            <ul class="space-y-4 mb-8 text-lg">
-                                <li class="flex items-center space-x-4 text-gray-700">
-                                    <div
-                                        class="w-10 h-10 rounded-full bg-brand-500/10 flex items-center justify-center flex-shrink-0">
-                                        <i data-lucide="brain-circuit" class="w-5 h-5 text-brand-500"></i>
-                                    </div>
-                                    <span class="font-medium">Custom AI workflows tailored to your data</span>
-                                </li>
-                                <li class="flex items-center space-x-4 text-gray-700">
-                                    <div
-                                        class="w-10 h-10 rounded-full bg-brand-500/10 flex items-center justify-center flex-shrink-0">
-                                        <i data-lucide="shield-check" class="w-5 h-5 text-brand-500"></i>
-                                    </div>
-                                    <span class="font-medium">Future-proof your competitive advantage</span>
-                                </li>
-                            </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ABOUT ===== -->
+        <section id="about" class="py-24 md:py-32 px-4 md:px-10 relative">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+
+                    <div class="reveal">
+                        <p class="text-brand-purple text-xs font-semibold tracking-[0.2em] uppercase mb-4">About Us</p>
+                        <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-8 leading-tight">
+                            The <span class="text-gradient">Karigar</span><br>Behind Your Tech
+                        </h2>
+                        <p class="text-gray-400 text-lg leading-relaxed mb-5 font-light">
+                            In Hindi, <strong class="text-white font-semibold">"Karigar"</strong> means a skilled
+                            craftsman — someone who takes pride in their craft and delivers with precision. That's
+                            exactly who we are.
+                        </p>
+                        <p class="text-gray-400 text-lg leading-relaxed mb-5 font-light">
+                            TechKarigar was built with one mission: to give every business — from small local shops to
+                            growing startups — access to world-class tech solutions that actually work.
+                        </p>
+                        <p class="text-gray-400 text-lg leading-relaxed mb-8 font-light">
+                            Whether it's a stunning website, a mobile app, SEO to rank on Google, or smart scripts to
+                            automate your office — we build it with care, precision, and craftsmanship.
+                        </p>
+                        <div class="flex items-center space-x-4">
+                            <a href="mailto:info@techkarigar.com"
+                                class="btn-primary px-6 py-3 rounded-full font-semibold text-white text-sm">Work With
+                                Us</a>
+                            <span class="text-gray-500 text-sm">info@techkarigar.com</span>
                         </div>
-                        <div class="w-full md:w-1/2 order-1 md:order-2">
-                            <div
-                                class="glass p-10 md:p-16 rounded-[40px] relative overflow-hidden border-white/5 border-t-brand-600/30 group-hover:bg-white/[0.05] transition-all duration-150">
-                                <div
-                                    class="absolute -right-20 -bottom-20 w-64 h-64 bg-brand-600/20 rounded-full blur-3xl group-hover:bg-brand-600/30 transition-all duration-150">
+                    </div>
+
+                    <div class="reveal reveal-delay-2">
+                        <div class="glass-dark rounded-3xl p-6">
+                            <div class="grid grid-cols-2 gap-4 mb-4">
+                                <div class="glass-dark-2 rounded-2xl p-6 text-center">
+                                    <i data-lucide="heart-handshake"
+                                        class="w-8 h-8 text-brand-purple mx-auto mb-3"></i>
+                                    <div class="text-white font-semibold text-sm mb-1">Client First</div>
+                                    <div class="text-gray-500 text-xs">Your success is our metric</div>
                                 </div>
-                                <i data-lucide="sparkles"
-                                    class="w-24 h-24 text-brand-600 mb-8 relative z-10 transition-transform duration-150 group-hover:scale-110"></i>
-                                <div
-                                    class="relative z-10 text-4xl md:text-7xl font-display font-bold text-gray-900 group-hover:text-brand-600 transition-colors">
-                                    10x</div>
-                                <div class="relative z-10 text-xl md:text-2xl text-gray-600 font-light mt-4">Growth
-                                    multiplier via AI systems</div>
+                                <div class="glass-dark-2 rounded-2xl p-6 text-center">
+                                    <i data-lucide="zap" class="w-8 h-8 text-brand-lime mx-auto mb-3"></i>
+                                    <div class="text-white font-semibold text-sm mb-1">Lightning Fast</div>
+                                    <div class="text-gray-500 text-xs">Performant by default</div>
+                                </div>
+                                <div class="glass-dark-2 rounded-2xl p-6 text-center">
+                                    <i data-lucide="shield-check"
+                                        class="w-8 h-8 text-brand-cyan mx-auto mb-3"></i>
+                                    <div class="text-white font-semibold text-sm mb-1">Reliable</div>
+                                    <div class="text-gray-500 text-xs">Built to last, not just launch</div>
+                                </div>
+                                <div class="glass-dark-2 rounded-2xl p-6 text-center">
+                                    <i data-lucide="sparkles" class="w-8 h-8 text-pink-400 mx-auto mb-3"></i>
+                                    <div class="text-white font-semibold text-sm mb-1">Crafted</div>
+                                    <div class="text-gray-500 text-xs">Every pixel with purpose</div>
+                                </div>
+                            </div>
+                            <div class="glass-dark-2 rounded-2xl p-5 flex items-center space-x-4">
+                                <div class="w-10 h-10 rounded-full icon-bg-purple flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="map-pin" class="w-5 h-5 text-brand-purple"></i>
+                                </div>
+                                <div>
+                                    <div class="text-white font-semibold text-sm">Based in India</div>
+                                    <div class="text-gray-500 text-xs">Serving clients globally</div>
+                                </div>
                             </div>
                         </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== TESTIMONIALS ===== -->
+        <section id="testimonials" class="py-24 md:py-32 px-4 md:px-10 relative">
+            <div class="max-w-7xl mx-auto">
+
+                <div class="text-center mb-16 reveal">
+                    <p class="text-brand-lime text-xs font-semibold tracking-[0.2em] uppercase mb-4">Social Proof</p>
+                    <h2 class="font-display text-4xl md:text-6xl font-bold text-white mb-6">
+                        What Clients <span class="text-gradient">Say</span>
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+                    <div class="testimonial-card glass-dark rounded-3xl p-8 reveal reveal-delay-1">
+                        <div class="flex space-x-1 mb-6" aria-label="5 stars">
+                            <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                        </div>
+                        <p class="text-gray-300 leading-relaxed mb-8 text-sm">
+                            "TechKarigar built our online store in just 2 weeks. Sales went up 3x in the first month.
+                            They understood our business from day one and delivered beyond expectations."
+                        </p>
+                        <div class="flex items-center space-x-3">
+                            <div
+                                class="w-10 h-10 rounded-full icon-bg-purple flex items-center justify-center text-brand-purple font-bold text-sm">
+                                RA</div>
+                            <div>
+                                <div class="text-white font-semibold text-sm">Ramesh Agarwal</div>
+                                <div class="text-gray-500 text-xs">Agarwal Textiles, Jaipur</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card glass-dark rounded-3xl p-8 reveal reveal-delay-2">
+                        <div class="flex space-x-1 mb-6" aria-label="5 stars">
+                            <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                        </div>
+                        <p class="text-gray-300 leading-relaxed mb-8 text-sm">
+                            "Their automation scripts eliminated 6 hours of daily data entry. Our team now focuses on
+                            real work. The ROI was immediate — we saw savings within the first week."
+                        </p>
+                        <div class="flex items-center space-x-3">
+                            <div
+                                class="w-10 h-10 rounded-full icon-bg-lime flex items-center justify-center text-brand-lime font-bold text-sm">
+                                PM</div>
+                            <div>
+                                <div class="text-white font-semibold text-sm">Priya Mehta</div>
+                                <div class="text-gray-500 text-xs">QuickDeliver Logistics, Mumbai</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card glass-dark rounded-3xl p-8 reveal reveal-delay-3">
+                        <div class="flex space-x-1 mb-6" aria-label="5 stars">
+                            <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                        </div>
+                        <p class="text-gray-300 leading-relaxed mb-8 text-sm">
+                            "We went from zero online presence to Google's first page in 4 months. TechKarigar's SEO
+                            work now brings us 40+ qualified leads every month. Phenomenal results."
+                        </p>
+                        <div class="flex items-center space-x-3">
+                            <div
+                                class="w-10 h-10 rounded-full icon-bg-cyan flex items-center justify-center text-brand-cyan font-bold text-sm">
+                                SK</div>
+                            <div>
+                                <div class="text-white font-semibold text-sm">Sandeep Kumar</div>
+                                <div class="text-gray-500 text-xs">SK Legal Associates, Delhi</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FAQ ===== -->
+        <section id="faq" class="py-24 md:py-32 px-4 md:px-10 relative">
+            <div class="max-w-3xl mx-auto">
+
+                <div class="text-center mb-16 reveal">
+                    <p class="text-brand-purple text-xs font-semibold tracking-[0.2em] uppercase mb-4">FAQ</p>
+                    <h2 class="font-display text-4xl md:text-6xl font-bold text-white mb-6">
+                        Questions <span class="text-gradient">Answered</span>
+                    </h2>
+                </div>
+
+                <div class="space-y-3 reveal">
+
+                    <div class="faq-item glass-dark rounded-2xl p-6 cursor-pointer">
+                        <div class="flex items-center justify-between">
+                            <h3 class="font-semibold text-white pr-4 text-sm md:text-base">How long does it take to
+                                build a website?</h3>
+                            <i data-lucide="plus" class="faq-icon w-5 h-5 text-brand-purple flex-shrink-0"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p class="text-gray-400 text-sm leading-relaxed pt-4">
+                                Most websites are delivered in 1–4 weeks depending on complexity. A simple business
+                                website typically takes 1–2 weeks. E-commerce or custom web apps take 3–6 weeks. We
+                                always provide a clear timeline before starting.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item glass-dark rounded-2xl p-6 cursor-pointer">
+                        <div class="flex items-center justify-between">
+                            <h3 class="font-semibold text-white pr-4 text-sm md:text-base">Do you work with small and
+                                local businesses?</h3>
+                            <i data-lucide="plus" class="faq-icon w-5 h-5 text-brand-purple flex-shrink-0"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p class="text-gray-400 text-sm leading-relaxed pt-4">
+                                Absolutely — small and local businesses are our specialty. We understand the unique
+                                challenges of taking a local business online and we've helped 100+ businesses across
+                                India do exactly that.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item glass-dark rounded-2xl p-6 cursor-pointer">
+                        <div class="flex items-center justify-between">
+                            <h3 class="font-semibold text-white pr-4 text-sm md:text-base">What is office automation
+                                and how does it help?</h3>
+                            <i data-lucide="plus" class="faq-icon w-5 h-5 text-brand-purple flex-shrink-0"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p class="text-gray-400 text-sm leading-relaxed pt-4">
+                                Office automation means custom scripts and tools that handle repetitive tasks
+                                automatically — data entry, report generation, file processing, email workflows, and
+                                more. Our clients typically save 3–8 hours of manual work per day.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item glass-dark rounded-2xl p-6 cursor-pointer">
+                        <div class="flex items-center justify-between">
+                            <h3 class="font-semibold text-white pr-4 text-sm md:text-base">Can you build apps for both
+                                Android and iOS?</h3>
+                            <i data-lucide="plus" class="faq-icon w-5 h-5 text-brand-purple flex-shrink-0"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p class="text-gray-400 text-sm leading-relaxed pt-4">
+                                Yes. We build native Android and iOS apps, as well as cross-platform hybrid apps that
+                                work on both platforms from a single codebase — which is more cost-effective for most
+                                businesses.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item glass-dark rounded-2xl p-6 cursor-pointer">
+                        <div class="flex items-center justify-between">
+                            <h3 class="font-semibold text-white pr-4 text-sm md:text-base">How do I get started?</h3>
+                            <i data-lucide="plus" class="faq-icon w-5 h-5 text-brand-purple flex-shrink-0"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p class="text-gray-400 text-sm leading-relaxed pt-4">
+                                Simply email us at <a href="mailto:info@techkarigar.com"
+                                    class="text-brand-purple hover:text-brand-lime transition-colors duration-200">info@techkarigar.com</a>
+                                with a brief description of your project. We'll respond within 24 hours with a free
+                                consultation.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CTA ===== -->
+        <section id="contact" class="py-24 md:py-32 px-4 md:px-10 relative">
+            <div class="max-w-4xl mx-auto text-center reveal">
+                <div class="cta-card glass-dark rounded-[40px] p-12 md:p-20 relative overflow-hidden">
+                    <div class="cta-glow-1 absolute -top-24 -right-24 w-64 h-64 rounded-full pointer-events-none"
+                        aria-hidden="true"></div>
+                    <div class="cta-glow-2 absolute -bottom-24 -left-24 w-64 h-64 rounded-full pointer-events-none"
+                        aria-hidden="true"></div>
+                    <div class="relative z-10">
+                        <p class="text-brand-lime text-xs font-semibold tracking-[0.2em] uppercase mb-6">Ready to
+                            Start?</p>
+                        <h2 class="font-display text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                            Let's Build Something<br><span class="text-gradient">Extraordinary</span>
+                        </h2>
+                        <p class="text-gray-400 text-lg mb-10 max-w-2xl mx-auto font-light leading-relaxed">
+                            Whether you're a small business going online for the first time or a company looking to
+                            automate — we'd love to hear from you.
+                        </p>
+                        <a href="mailto:info@techkarigar.com"
+                            class="group btn-primary inline-flex items-center space-x-3 px-10 py-5 rounded-full font-semibold text-white text-lg">
+                            <i data-lucide="mail" class="w-5 h-5"></i>
+                            <span>info@techkarigar.com</span>
+                            <i data-lucide="arrow-right"
+                                class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200"></i>
+                        </a>
+                        <p class="text-gray-600 text-sm mt-6">We respond within 24 hours. No obligations.</p>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- Footer Section -->
-        <footer class="py-8 px-4 md:px-10 glass border-t border-white/5 relative z-10">
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="py-10 px-4 md:px-10 border-t border-white/5">
             <div class="max-w-7xl mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-10 md:mb-20">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
                     <div class="md:col-span-2">
-                        <a href="#" class="flex items-center space-x-2 mb-8 group">
-                            <div
-                                class="w-14 h-14 glass rounded-xl flex items-center justify-center group-hover:bg-brand-500/20 transition-all duration-100 p-2">
-                                <img src="assets/images/t-logo-alpha.png" alt="Techkarigar Logo"
+                        <a href="#" class="flex items-center space-x-2 mb-6">
+                            <div class="nav-logo-wrap w-10 h-10 rounded-xl flex items-center justify-center p-1.5">
+                                <img src="assets/images/t-logo-alpha.png" alt="TechKarigar Logo"
                                     class="w-full h-full object-contain">
                             </div>
-                            <span class="font-display text-2xl font-bold tracking-tight text-gray-900 italic">Tech<span
-                                    class="text-brand-400">karigar</span></span>
+                            <span class="font-display text-xl font-bold text-white">Tech<span
+                                    class="text-brand-lime">karigar</span></span>
                         </a>
-                        <p class="text-gray-700 max-w-sm mb-10 font-light leading-relaxed">
-                            Bespoke digital artistry for high-intent niches. We build the lead machines and AI workflows
-                            that scale modern businesses.
+                        <p class="text-gray-500 max-w-sm font-light leading-relaxed text-sm">
+                            Crafting digital solutions for businesses across India and globally. Websites, mobile apps,
+                            SEO, and smart automation.
                         </p>
-                        <!-- Social links (Commented for future)
-                        <div class="flex space-x-4">
-                            <a href="#"
-                                class="w-10 h-10 glass rounded-full flex items-center justify-center text-gray-700 hover:text-brand-400 hover:border-brand-500/50 transition-all">
-                                <i data-lucide="twitter" class="w-5 h-5"></i>
-                            </a>
-                            <a href="#"
-                                class="w-10 h-10 glass rounded-full flex items-center justify-center text-gray-700 hover:text-brand-400 hover:border-brand-500/50 transition-all">
-                                <i data-lucide="linkedin" class="w-5 h-5"></i>
-                            </a>
-                            <a href="#"
-                                class="w-10 h-10 glass rounded-full flex items-center justify-center text-gray-700 hover:text-brand-400 hover:border-brand-500/50 transition-all">
-                                <i data-lucide="github" class="w-5 h-5"></i>
-                            </a>
-                        </div>
-                        -->
                     </div>
-
                     <div>
-                        <h4 class="font-display font-bold text-gray-900 uppercase tracking-widest text-xs mb-8">Services
-                        </h4>
-                        <ul class="space-y-4 text-sm text-gray-600">
+                        <h4 class="text-white font-semibold text-xs uppercase tracking-widest mb-6">Services</h4>
+                        <ul class="space-y-3 text-sm text-gray-500">
                             <li><a href="mailto:info@techkarigar.com?subject=Inquiry: Website Development"
-                                    class="hover:text-brand-400 transition-colors">Web Development</a></li>
-                            <li><a href="mailto:info@techkarigar.com?subject=Inquiry: Mobile App Development"
-                                    class="hover:text-brand-400 transition-colors">Mobile App Development</a></li>
-                            <li><a href="mailto:info@techkarigar.com?subject=Inquiry: SEO & Marketing"
-                                    class="hover:text-brand-400 transition-colors">SEO & Digital Marketing</a></li>
-                            <li><a href="mailto:info@techkarigar.com?subject=Inquiry: Automation Solutions"
-                                    class="hover:text-brand-400 transition-colors">Automation Solutions</a></li>
+                                    class="hover:text-white transition-colors duration-200">Web Development</a></li>
+                            <li><a href="mailto:info@techkarigar.com?subject=Inquiry: Mobile App"
+                                    class="hover:text-white transition-colors duration-200">Mobile Apps</a></li>
+                            <li><a href="mailto:info@techkarigar.com?subject=Inquiry: SEO"
+                                    class="hover:text-white transition-colors duration-200">SEO &amp; Marketing</a></li>
+                            <li><a href="mailto:info@techkarigar.com?subject=Inquiry: Automation"
+                                    class="hover:text-white transition-colors duration-200">Automation</a></li>
                         </ul>
                     </div>
-
                     <div>
-                        <h4 class="font-display font-bold text-gray-900 uppercase tracking-widest text-xs mb-8">Contacts
-                        </h4>
-                        <ul class="space-y-4 text-sm text-gray-600">
-                            <li class="flex items-center space-x-3">
-                                <i data-lucide="mail" class="w-4 h-4 text-brand-400"></i>
+                        <h4 class="text-white font-semibold text-xs uppercase tracking-widest mb-6">Contact</h4>
+                        <ul class="space-y-3 text-sm text-gray-500">
+                            <li class="flex items-center space-x-2">
+                                <i data-lucide="mail" class="w-4 h-4 text-brand-purple flex-shrink-0"></i>
                                 <a href="mailto:info@techkarigar.com"
-                                    class="hover:text-brand-400 transition-colors">info@techkarigar.com</a>
+                                    class="hover:text-white transition-colors duration-200">info@techkarigar.com</a>
                             </li>
-                            <li class="flex items-center space-x-3">
-                                <i data-lucide="map-pin" class="w-4 h-4 text-brand-400"></i>
-                                <!-- <span>San Francisco & Remote</span> (Commented for future) -->
+                            <li class="flex items-start space-x-2">
+                                <i data-lucide="map-pin" class="w-4 h-4 text-brand-purple flex-shrink-0 mt-0.5"></i>
                                 <span>Serving clients across India and globally</span>
                             </li>
                         </ul>
                     </div>
                 </div>
-
-                <div class="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-                    <div class="text-xs text-gray-600">
-                        &copy; 2026 Techkarigar. All rights reserved. Artisan Codebase.
-                    </div>
-                    <div class="flex space-x-8 text-xs text-gray-600">
-                        <a href="privacy.html" class="hover:text-gray-700 transition-colors">Privacy Policy</a>
-                        <a href="terms.html" class="hover:text-gray-700 transition-colors">Terms of Service</a>
+                <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <div class="text-xs text-gray-600">&copy; 2026 TechKarigar. All rights reserved.</div>
+                    <div class="flex space-x-6 text-xs text-gray-600">
+                        <a href="privacy.html" class="hover:text-gray-400 transition-colors duration-200">Privacy
+                            Policy</a>
+                        <a href="terms.html" class="hover:text-gray-400 transition-colors duration-200">Terms of
+                            Service</a>
                     </div>
                 </div>
             </div>
         </footer>
-        </main>
+
     </div>
 
-    <!-- JSON-LD Structured Data for SEO (Service + FAQ) -->
+    <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     [
         {
             "@context": "https://schema.org",
             "@type": "ProfessionalService",
-            "name": "Techkarigar",
-            "image": "https://techkarigar.com/assets/og-image.jpg",
-            "description": "Techkarigar builds astoundingly beautiful Web, Mobile, and Digital solutions to help businesses go online and grow digitally.",
-            "priceRange": "$$$",
+            "name": "TechKarigar",
+            "url": "https://techkarigar.com",
+            "description": "TechKarigar builds high-performance websites, mobile apps, and intelligent automation solutions for businesses across India.",
+            "areaServed": "IN",
             "offers": [
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Website Design and Development",
-                        "description": "Creating high-performance websites to take your business online."
-                    }
-                },
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Mobile App Development",
-                        "description": "Bespoke Android, iOS, and hybrid mobile applications."
-                    }
-                },
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "SEO and Digital Marketing",
-                        "description": "Improving website ranking and amplifying business reach."
-                    }
-                },
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Automation Solutions",
-                        "description": "Custom scripts and smart tools to reduce manual work and save time."
-                    }
-                }
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Website Design and Development" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mobile App Development" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SEO Optimization" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Office Automation Solutions" } }
             ]
         },
         {
@@ -658,34 +865,18 @@
             "mainEntity": [
                 {
                     "@type": "Question",
-                    "name": "How does website design help my business?",
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "A professional website establishes your online presence, builds trust with customers, and acts as a 24/7 lead generation machine."
-                    }
+                    "name": "How long does it take to build a website?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "Most websites are delivered in 1–4 weeks depending on complexity." }
                 },
                 {
                     "@type": "Question",
-                    "name": "What kind of automation solutions do you provide?",
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "We build bespoke automation scripts and use smart tools to automate repetitive office tasks, saving businesses hundreds of hours of manual effort."
-                    }
-                },
-                {
-                    "@type": "Question",
-                    "name": "Can you help with mobile app development?",
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "Yes, we specialize in building high-performance mobile apps for Android, iOS, and hybrid platforms tailored to your business needs."
-                    }
+                    "name": "What is office automation?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "We build custom scripts and tools that handle repetitive tasks automatically, saving 3–8 hours daily." }
                 }
             ]
         }
     ]
     </script>
-
-    <!-- Removed scripts to <head> with defer for performance -->
 
 </body>
 
